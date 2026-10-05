@@ -20,107 +20,157 @@ def generate_image():
         )
 
     prompt = """
-An authentic unedited photograph of a real 21-year-old adult woman
+A candid smartphone photograph of a real 21-year-old adult woman
 named Alicia.
 
-She is a naturally attractive young woman
-with short straight black bob hair,
+Alicia has short straight black bob hair,
 green eyes,
 fair skin,
-and a slim natural figure.
+and a slim natural body.
 
-IMPORTANT:
+She looks like an ordinary real young woman,
+not a professional model.
 
-Her face must look like a real individual human face,
-not a generic beauty-model face.
+FACE:
 
-She has natural individual facial characteristics.
+A completely natural individual human face.
 
-Her facial features are slightly asymmetrical,
-subtle and ordinary.
+The face should NOT look designed or idealized.
 
-Her eyes are naturally positioned
-with small realistic differences between the two sides of the face.
+Use ordinary realistic human facial proportions.
 
-Her nose has natural individual proportions.
+The facial features should have natural variation
+and subtle asymmetry.
 
-Her lips have natural shape and volume.
+The nose is an ordinary natural human nose,
+with realistic width, length and shape.
 
-Her cheeks and jaw have natural human asymmetry.
+Do not make the nose tiny,
+perfectly straight,
+perfectly sculpted,
+or cosmetically enhanced.
 
-Her face is not perfectly symmetrical.
+The lips have an ordinary natural human shape.
 
-Her facial proportions should look ordinary and believable,
-like a real person photographed casually.
+Natural lip thickness and natural lip proportions.
 
-Do not make her face exceptionally perfect.
+Do not make the lips oversized,
+perfectly symmetrical,
+perfectly outlined,
+or cosmetically enhanced.
 
-Do not make her look like a fashion model.
+Do not create a beauty-model nose.
 
-Do not make her look like a beauty advertisement.
+Do not create influencer-style lips.
 
-Do not exaggerate any facial feature.
+Do not create exaggerated facial features.
 
-Do not create an idealized female face.
+Do not make the eyes unusually large.
 
-Do not create a generic AI influencer face.
+Do not make the cheekbones exaggerated.
 
-Do not create an overly symmetrical face.
+Do not make the jawline extremely sharp.
 
-Do not create huge eyes.
+Do not make the face perfectly symmetrical.
 
-Do not create a tiny nose.
+The face should look like an individual person
+who could realistically exist in everyday life.
 
-Do not create perfectly shaped lips.
+Her appearance should be attractive in a normal,
+unremarkable human way.
 
-Do not create a perfectly defined jawline.
+SKIN:
 
-Do not create porcelain skin.
+Natural young adult skin.
 
-The face should have the natural complexity
-and subtle irregularity of an actual human face.
+Real photographic skin texture.
+
+Subtle natural variation in skin tone.
+
+Very slight natural redness around the cheeks and nose.
+
+Small natural imperfections.
+
+No beauty filter.
+
+No airbrushing.
+
+No skin smoothing.
+
+No porcelain skin.
+
+No waxy skin.
+
+No plastic appearance.
+
+No artificial facial retouching.
+
+No flawless digital skin.
+
+HAIR:
+
+Short straight black bob haircut.
+
+Natural individual hair strands.
+
+Some strands slightly out of place.
+
+Natural hair volume.
+
+No perfectly arranged hairstyle.
+
+EXPRESSION:
+
+A relaxed natural expression.
+
+A very subtle smile.
+
+No exaggerated smile.
+
+No posed influencer expression.
+
+No seductive expression.
+
+No exaggerated facial expression.
+
+She is looking slightly beside the camera.
+
+Her head is naturally turned a little to one side.
 
 SCENE:
 
-Alicia is sitting outside a small European cafe
-on an ordinary afternoon.
+Alicia is sitting at a small outdoor cafe
+on an ordinary European city street.
 
-A friend is casually taking a photograph of her
+A friend is taking the photograph casually
 with a modern smartphone.
+
+It feels like a spontaneous photograph
+from someone's personal phone.
 
 She is not posing for a professional photoshoot.
 
-Her body is naturally relaxed.
-
-Her shoulders are slightly uneven.
-
-Her head is turned slightly to one side.
-
-She is looking just beside the camera.
-
-She has a small natural smile.
-
-Her expression is relaxed and spontaneous.
+She is not on a fashion set.
 
 CLOTHING:
 
-Simple modern casual clothing.
+Simple modern everyday clothing.
 
-A fitted neutral top,
+A fitted neutral-colored top,
 casual jeans,
 minimal accessories.
 
 Fashionable but ordinary.
 
-LIGHT:
+LIGHTING:
 
-Natural outdoor daylight.
+Natural afternoon daylight.
 
-Soft light from the side.
+Soft daylight from one side.
 
-Natural shadows across the face.
+Natural shadows on the face.
 
-Slight variation in illumination.
+Slightly uneven natural illumination.
 
 No studio lighting.
 
@@ -130,19 +180,23 @@ No glamour lighting.
 
 No cinematic lighting.
 
+No artificial glow.
+
 CAMERA:
 
-Normal modern smartphone camera.
+Modern smartphone camera.
 
-Natural 35mm equivalent perspective.
+Natural smartphone lens perspective.
 
-Realistic smartphone exposure.
+Approximately 35mm equivalent.
+
+Natural exposure.
 
 Natural colors.
 
 Natural dynamic range.
 
-Very subtle digital camera noise.
+Very subtle smartphone image noise.
 
 Very subtle photographic grain.
 
@@ -152,65 +206,74 @@ No excessive sharpening.
 
 No beauty mode.
 
-No portrait mode skin processing.
+No portrait mode skin smoothing.
 
 No face enhancement.
 
-No artificial skin smoothing.
+No artificial bokeh.
 
-The photograph should look like
-an ordinary photograph from someone's phone.
+No professional retouching.
 
 BACKGROUND:
 
-Real European cafe and street.
+A real European cafe street.
 
-Tables.
-
-Chairs.
+Tables and chairs.
 
 Buildings.
 
 Cars.
 
-A few distant pedestrians.
+Several distant pedestrians.
 
 Natural environmental details.
 
 Moderate depth of field.
 
-The background is recognizable
-but not distracting.
+The background should remain recognizable.
 
-PHOTOGRAPHIC RESULT:
+FINAL RESULT:
 
-Real individual person.
+The photograph must look like an ordinary,
+unedited photograph of one real person.
 
-Real human face.
+Natural human face.
 
-Natural facial asymmetry.
+Natural nose.
 
-Natural expression.
+Natural lips.
+
+Natural eyes.
 
 Natural skin.
 
 Natural hair.
 
-Natural anatomy.
+Natural body proportions.
 
-Natural proportions.
+Natural expression.
 
 Natural lighting.
 
 Natural environment.
 
-Unedited smartphone photograph.
+No idealized beauty standards.
 
-The image should feel completely ordinary
-and believable.
+No artificial perfection.
 
-It should look like a photograph of a real person
-rather than a generated portrait.
+No generic AI influencer appearance.
+
+No CGI.
+
+No 3D rendering.
+
+No illustration.
+
+No fantasy appearance.
+
+No commercial beauty photography.
+
+No fashion campaign.
 
 Vertical 4:5 Instagram photograph.
 
@@ -268,3 +331,4 @@ No watermark.
 
 if __name__ == "__main__":
     generate_image()
+
