@@ -79,43 +79,60 @@ unremarkable human way.
 
 EYES:
 
-Natural realistic human green eyes.
+Natural realistic human eyes photographed with a smartphone.
 
-Normal human eye size and proportions.
+Medium-sized green eyes with normal human proportions.
 
-Natural almond-shaped eyes with soft,
-realistic eyelids.
+Soft natural eye shape that fits naturally
+with the rest of the face.
 
-The eyes should fit naturally into the face.
+Natural eyelids with soft transitions
+between the eyelid, eye and surrounding skin.
 
-Natural green iris color with subtle variations
-of green and brown tones.
+The eye contours should be soft and subtle,
+not sharply outlined.
 
-Realistic iris texture and natural pupil size.
+Natural slightly uneven eyelid shapes.
 
-Soft natural reflections from daylight.
+Natural green irises with realistic,
+subtle color variation.
 
-Natural eyelashes.
+The irises should look photographic and organic,
+not perfectly patterned or overly detailed.
 
-Natural eyelids and subtle skin texture
-around the eyes.
+Natural pupils.
 
-The eyes should look relaxed and alive,
-like a real person photographed with a smartphone.
+Natural soft reflections from daylight.
 
-No exaggerated eye size.
+Natural eyelashes with normal density.
 
-No unnaturally bright green color.
+The area around the eyes should have
+realistic skin texture and soft natural shadows.
+
+No sharp lines around the eyes.
+
+No artificial eye contour.
+
+No exaggerated eyelids.
+
+No perfectly defined eye shape.
+
+No oversized eyes.
+
+No unnaturally bright green eyes.
 
 No glowing eyes.
 
 No doll-like eyes.
 
-No anime eyes.
-
-No artificial glossy effect.
+No artificial glossy eyes.
 
 No exaggerated eyelashes.
+
+The eyes should look completely natural,
+relaxed and believable,
+like an ordinary real person photographed
+with a modern smartphone.
 
 SKIN:
 
