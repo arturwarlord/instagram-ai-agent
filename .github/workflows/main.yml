@@ -27,6 +27,8 @@ jobs:
       - name: Run AI Agent
         env:
           POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
         run: python main.py
 
       - name: Upload generated image
@@ -48,6 +50,52 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/generation_history.json data/caption_history.json content/posts/alicia_test.json
+          git add data/generation_history.json data/caption_history.json content/posts/alicia_test.json content/generated/alicia_test.jpg
           git commit -m "chore: save generated post [skip ci]"
           git push
+
+      - name: Publish to Instagram
+        if: ${{ env.INSTAGRAM_ACCESS_TOKEN != '' && env.INSTAGRAM_USER_ID != '' }}
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          INSTAGRAM_IMAGE_URL: https://raw.githubusercontent.com/arturwarlord/instagram-ai-agent/main/content/generated/alicia_test.jpg
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from instagram.publisher import publish_post
+
+          post = json.loads(
+              Path("content/posts/alicia_test.json").read_text(encoding="utf-8")
+          )
+
+          media_id = publish_post(post)
+
+          if media_id:
+              post["instagram_media_id"] = media_id
+              Path("content/posts/alicia_test.json").write_text(
+                  json.dumps(post, ensure_ascii=False, indent=2),
+                  encoding="utf-8",
+              )
+
+              import subprocess
+
+              subprocess.run(
+                  ["git", "config", "user.name", "github-actions[bot]"],
+                  check=True,
+              )
+              subprocess.run(
+                  ["git", "config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"],
+                  check=True,
+              )
+              subprocess.run(
+                  ["git", "add", "content/posts/alicia_test.json"],
+                  check=True,
+              )
+              subprocess.run(
+                  ["git", "commit", "-m", "chore: save Instagram publication ID [skip ci]"],
+                  check=True,
+              )
+              subprocess.run(["git", "push"], check=True)
+          PY
