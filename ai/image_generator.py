@@ -4,20 +4,22 @@ from urllib.parse import quote
 
 import requests
 
+
 OUTPUT_DIR = Path("content/generated")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 API_URL = "https://gen.pollinations.ai/image"
 
+
 def generate_image():
-api_key = os.getenv("POLLINATIONS_API_KEY")
+    api_key = os.getenv("POLLINATIONS_API_KEY")
 
-if not api_key:
-raise RuntimeError(
-"❌ POLLINATIONS_API_KEY is not configured"
-)
+    if not api_key:
+        raise RuntimeError(
+            "❌ POLLINATIONS_API_KEY is not configured"
+        )
 
-prompt = """
+    prompt = """
 A candid smartphone photograph of a real 21-year-old adult woman
 named Alicia.
 
@@ -62,8 +64,6 @@ Do not create a beauty-model nose.
 Do not create influencer-style lips.
 
 Do not create exaggerated facial features.
-
-Do not make the eyes unusually large.
 
 Do not make the cheekbones exaggerated.
 
@@ -320,51 +320,53 @@ No logo.
 No watermark.
 """
 
-print("🎨 Generating natural Alicia...")
+    print("🎨 Generating natural Alicia...")
 
-encoded_prompt = quote(" ".join(prompt.split()))
+    encoded_prompt = quote(" ".join(prompt.split()))
 
-url = (
-f"{API_URL}/{encoded_prompt}"
-"?model=flux"
-"&width=1024"
-"&height=1280"
-"&nologo=true"
-)
+    url = (
+        f"{API_URL}/{encoded_prompt}"
+        "?model=flux"
+        "&width=1024"
+        "&height=1280"
+        "&nologo=true"
+    )
 
-try:
-response = requests.get(
-url,
-headers={
-"Authorization": f"Bearer {api_key}"
-},
-timeout=180,
-)
+    try:
+        response = requests.get(
+            url,
+            headers={
+                "Authorization": f"Bearer {api_key}"
+            },
+            timeout=180,
+        )
 
-if response.status_code != 200:
-raise RuntimeError(
-f"❌ Pollinations error "
-f"{response.status_code}: {response.text[:1000]}"
-)
+        if response.status_code != 200:
+            raise RuntimeError(
+                f"❌ Pollinations error "
+                f"{response.status_code}: {response.text[:1000]}"
+            )
 
-if not response.content:
-raise RuntimeError(
-"❌ Pollinations returned an empty image"
-)
+        if not response.content:
+            raise RuntimeError(
+                "❌ Pollinations returned an empty image"
+            )
 
-output_file = OUTPUT_DIR / "alicia_test.jpg"
-output_file.write_bytes(response.content)
+        output_file = OUTPUT_DIR / "alicia_test.jpg"
+        output_file.write_bytes(response.content)
 
-print(f"✅ Image saved: {output_file}")
-print(
-f"📦 Size: "
-f"{output_file.stat().st_size / 1024:.1f} KB"
-)
+        print(f"✅ Image saved: {output_file}")
+        print(
+            f"📦 Size: "
+            f"{output_file.stat().st_size / 1024:.1f} KB"
+        )
 
-except requests.RequestException as error:
-raise RuntimeError(
-f"❌ Network error while generating image: {error}"
-) from error
+    except requests.RequestException as error:
+        raise RuntimeError(
+            f"❌ Network error while generating image: {error}"
+        ) from error
+
 
 if __name__ == "__main__":
-generate_image()
+    generate_image()
+
