@@ -65,6 +65,8 @@ Do not create influencer-style lips.
 
 Do not create exaggerated facial features.
 
+Do not make the eyes unusually large.
+
 Do not make the cheekbones exaggerated.
 
 Do not make the jawline extremely sharp.
@@ -79,60 +81,29 @@ unremarkable human way.
 
 EYES:
 
-Natural realistic human eyes photographed with a smartphone.
+Natural realistic human green eyes.
 
-Medium-sized green eyes with normal human proportions.
+Normal eye size and natural proportions.
 
-Soft natural eye shape that fits naturally
-with the rest of the face.
+The eyes should fit naturally into the face.
 
-Natural eyelids with soft transitions
-between the eyelid, eye and surrounding skin.
-
-The eye contours should be soft and subtle,
-not sharply outlined.
-
-Natural slightly uneven eyelid shapes.
-
-Natural green irises with realistic,
-subtle color variation.
-
-The irises should look photographic and organic,
-not perfectly patterned or overly detailed.
+Natural green iris color.
 
 Natural pupils.
 
-Natural soft reflections from daylight.
+Soft natural daylight reflection.
 
-Natural eyelashes with normal density.
+Natural eyelashes.
 
-The area around the eyes should have
-realistic skin texture and soft natural shadows.
-
-No sharp lines around the eyes.
-
-No artificial eye contour.
-
-No exaggerated eyelids.
-
-No perfectly defined eye shape.
+The eyes should look relaxed and believable,
+like real human eyes photographed with a smartphone.
 
 No oversized eyes.
-
-No unnaturally bright green eyes.
-
 No glowing eyes.
-
 No doll-like eyes.
-
+No anime eyes.
 No artificial glossy eyes.
-
 No exaggerated eyelashes.
-
-The eyes should look completely natural,
-relaxed and believable,
-like an ordinary real person photographed
-with a modern smartphone.
 
 SKIN:
 
@@ -386,4 +357,3 @@ No watermark.
 
 if __name__ == "__main__":
     generate_image()
-
