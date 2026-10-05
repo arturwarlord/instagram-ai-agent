@@ -1,59 +1,79 @@
 import os
 from pathlib import Path
+from urllib.parse import quote
 
-import fal_client
 import requests
 
 
 OUTPUT_DIR = Path("content/generated")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
+API_URL = "https://gen.pollinations.ai/image"
+
 
 def generate_image():
+    api_key = os.getenv("POLLINATIONS_API_KEY")
+
+    if not api_key:
+        raise RuntimeError(
+            "❌ POLLINATIONS_API_KEY is not configured"
+        )
+
     prompt = """
-    Photorealistic Instagram lifestyle photo of Alicia,
-    a 21-year-old slim woman with fair skin, black short bob haircut
-    and green eyes.
+Photorealistic Instagram lifestyle photograph of Alicia,
+a 21-year-old slim young woman with fair skin,
+black short bob haircut and green eyes.
 
-    She has a playful, bold and confident personality.
+She has a playful, bold and confident personality.
 
-    Modern casual fashion outfit.
-    She is standing in a stylish European city street,
-    natural daylight, realistic photography,
-    natural skin texture, realistic face,
-    high-end Instagram photography,
-    candid lifestyle shot.
+She is wearing modern casual fashion clothing.
 
-    Vertical portrait composition, 4:5 aspect ratio.
-    No text, no watermark.
-    """
+Alicia is walking through a beautiful European city,
+natural daylight, realistic photography,
+natural skin texture, realistic facial features,
+high-end Instagram lifestyle photography,
+candid natural pose.
 
-    print("🎨 Generating image...")
+The same person must remain visually consistent.
 
-    result = fal_client.subscribe(
-        "fal-ai/flux-pro/kontext",
-        arguments={
-            "prompt": prompt,
-            "aspect_ratio": "4:5"
-        }
+Vertical Instagram portrait,
+4:5 composition.
+
+No text.
+No watermark.
+"""
+
+    print("🎨 Generating Alicia...")
+
+    encoded_prompt = quote(" ".join(prompt.split()))
+
+    url = (
+        f"{API_URL}/{encoded_prompt}"
+        "?model=flux"
+        "&width=1024"
+        "&height=1280"
+        "&nologo=true"
     )
 
-    images = result.get("images", [])
+    response = requests.get(
+        url,
+        headers={
+            "Authorization": f"Bearer {api_key}"
+        },
+        timeout=180,
+    )
 
-    if not images:
-        raise RuntimeError("❌ FAL returned no images")
-
-    image_url = images[0]["url"]
-
-    print(f"🖼️ Image URL: {image_url}")
-
-    response = requests.get(image_url, timeout=120)
-    response.raise_for_status()
+    if response.status_code != 200:
+        raise RuntimeError(
+            f"❌ Pollinations error "
+            f"{response.status_code}: {response.text[:1000]}"
+        )
 
     output_file = OUTPUT_DIR / "alicia_test.jpg"
     output_file.write_bytes(response.content)
 
     print(f"✅ Image saved: {output_file}")
+    print(f"📦 Size: {output_file.stat().st_size / 1024:.1f} KB")
 
 
 if __name__ == "__main__":
