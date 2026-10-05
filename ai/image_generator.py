@@ -79,6 +79,88 @@ who could realistically exist in everyday life.
 Her appearance should be attractive in a normal,
 unremarkable human way.
 
+
+EYES:
+
+Natural realistic human eyes.
+
+Medium-sized eyes with ordinary human proportions.
+
+The eyes should NOT be large,
+round,
+wide-open,
+or doll-like.
+
+Natural eye shape with subtle individual asymmetry.
+
+The two eyes should not be perfectly identical.
+
+Natural upper and lower eyelids.
+
+Visible natural eyelid folds.
+
+Natural eyelashes with irregular individual lashes.
+
+The irises are naturally green,
+but the green color should be subtle and slightly muted.
+
+Do not make the irises extremely bright,
+neon green,
+glowing green,
+or artificially saturated.
+
+The iris should contain realistic,
+irregular radial patterns and subtle color variation.
+
+The iris should NOT look like a perfectly smooth
+colored circle.
+
+The pupils should have a natural realistic size.
+
+Do not make the pupils unnaturally large.
+
+Natural white of the eyes.
+
+Very subtle natural blood vessels and color variation
+in the whites of the eyes.
+
+Do not make the whites of the eyes perfectly pure white.
+
+Natural moisture on the eyes,
+but no glossy artificial reflection.
+
+Small realistic catchlights caused by natural daylight.
+
+No dramatic eye sparkle.
+
+No glowing eyes.
+
+No glass-like eyes.
+
+No anime eyes.
+
+No doll eyes.
+
+No exaggerated eyelashes.
+
+No perfectly symmetrical eyes.
+
+No beauty-filter eyes.
+
+No CGI eyes.
+
+The eyes should look slightly different from each other
+in shape and position, as happens naturally in real people.
+
+Her gaze should feel relaxed and natural.
+
+She is looking slightly beside the camera,
+not directly staring into the lens.
+
+The eyes should communicate a calm,
+casual and natural expression.
+
+
 SKIN:
 
 Natural young adult skin.
@@ -331,4 +413,3 @@ No watermark.
 
 if __name__ == "__main__":
     generate_image()
-
