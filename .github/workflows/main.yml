@@ -55,12 +55,16 @@ jobs:
           git push
 
       - name: Publish to Instagram
-        if: ${{ env.INSTAGRAM_ACCESS_TOKEN != '' && env.INSTAGRAM_USER_ID != '' }}
         env:
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
-          INSTAGRAM_IMAGE_URL: https://raw.githubusercontent.com/arturwarlord/instagram-ai-agent/main/content/generated/alicia_test.jpg
+          INSTAGRAM_IMAGE_URL: ${{ format('https://raw.githubusercontent.com/arturwarlord/instagram-ai-agent/{0}/content/generated/alicia_test.jpg', github.sha) }}
         run: |
+          if [ -z "$INSTAGRAM_ACCESS_TOKEN" ] || [ -z "$INSTAGRAM_USER_ID" ]; then
+            echo "ℹ️ Instagram credentials are not configured. Publishing skipped."
+            exit 0
+          fi
+          python - <<'PY'
           python - <<'PY'
           import json
           from pathlib import Path
