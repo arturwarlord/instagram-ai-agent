@@ -126,40 +126,31 @@ No cosmetic enhancement.
 
 SKIN:
 
-Real unretouched human skin.
+Natural real human skin photographed without retouching.
 
-Natural skin texture visible in the photograph.
+The skin should look like normal skin
+of a real young woman.
 
-Visible pores and subtle fine texture.
+Natural skin color and natural tonal variation.
 
-Small natural variations in skin tone.
+Natural transition between light and shadow
+across the face.
 
-Very subtle imperfections.
-
-Natural texture around the nose and mouth.
-
-Natural texture on the cheeks and forehead.
-
-The skin should have the uneven texture
-of a real young adult photographed up close.
+The skin should retain its normal photographic appearance.
 
 No beauty filter.
-
 No airbrushing.
-
 No skin smoothing.
-
+No retouching.
 No porcelain skin.
-
 No waxy skin.
-
 No plastic skin.
+No artificially generated skin texture.
+No perfectly uniform skin.
+No perfectly flawless complexion.
 
-No flawless skin.
-
-No artificial retouching.
-
-No digitally perfect complexion.
+The skin should look completely ordinary
+and believable in a real smartphone photograph.
 
 HAIR:
 
