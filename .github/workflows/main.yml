@@ -33,12 +33,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: alicia-generated-image
-          path: content/generated/alicia_test.jpg
+          path: |
+            content/generated/alicia_test.jpg
+            content/posts/alicia_test.json
           if-no-files-found: error
 
       - name: Save generation history
         run: |
-          if git diff --quiet -- data/generation_history.json; then
+          if git diff --quiet -- data/generation_history.json data/caption_history.json content/posts/alicia_test.json; then
             echo "ℹ️ No history changes to commit"
             exit 0
           fi
@@ -46,6 +48,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/generation_history.json
-          git commit -m "chore: update generation history [skip ci]"
+          git add data/generation_history.json data/caption_history.json content/posts/alicia_test.json
+          git commit -m "chore: save generated post [skip ci]"
           git push
