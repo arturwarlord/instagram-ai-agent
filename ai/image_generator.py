@@ -4,22 +4,20 @@ from urllib.parse import quote
 
 import requests
 
-
 OUTPUT_DIR = Path("content/generated")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 API_URL = "https://gen.pollinations.ai/image"
 
-
 def generate_image():
-    api_key = os.getenv("POLLINATIONS_API_KEY")
+api_key = os.getenv("POLLINATIONS_API_KEY")
 
-    if not api_key:
-        raise RuntimeError(
-            "❌ POLLINATIONS_API_KEY is not configured"
-        )
+if not api_key:
+raise RuntimeError(
+"❌ POLLINATIONS_API_KEY is not configured"
+)
 
-    prompt = """
+prompt = """
 A candid smartphone photograph of a real 21-year-old adult woman
 named Alicia.
 
@@ -79,125 +77,45 @@ who could realistically exist in everyday life.
 Her appearance should be attractive in a normal,
 unremarkable human way.
 
-
 EYES:
 
-Realistic natural human eyes.
+Natural realistic human green eyes.
 
-The eyes are medium-sized and naturally proportioned
-for her face.
+Normal human eye size and proportions.
 
-Do not make the eyes large,
-oversized,
-perfectly round,
-or doll-like.
+Natural almond-shaped eyes with soft,
+realistic eyelids.
 
-The eye shape should be naturally slightly almond-shaped
-with realistic human proportions.
+The eyes should fit naturally into the face.
 
-The upper eyelids should have natural folds
-and subtle variation.
+Natural green iris color with subtle variations
+of green and brown tones.
 
-The lower eyelids should have realistic natural contours.
+Realistic iris texture and natural pupil size.
 
-The two eyes should have very slight natural differences
-in shape, position and openness.
+Soft natural reflections from daylight.
 
-Do not make the eyes perfectly symmetrical.
+Natural eyelashes.
 
-The irises are naturally green.
+Natural eyelids and subtle skin texture
+around the eyes.
 
-The green color should be realistic,
-soft and slightly muted.
+The eyes should look relaxed and alive,
+like a real person photographed with a smartphone.
 
-Do not use neon green.
+No exaggerated eye size.
 
-Do not use extremely bright green.
+No unnaturally bright green color.
 
-Do not make the eyes glow.
+No glowing eyes.
 
-The irises should contain complex natural patterns,
-subtle radial fibers,
-small variations in green and darker tones,
-and irregular natural details.
-
-The iris should NOT look like
-a perfectly smooth painted circle.
-
-The pupils should be naturally sized
-and realistically positioned.
-
-Do not make the pupils unnaturally large.
-
-The whites of the eyes should have
-slight natural color variation.
-
-Do not make the sclera perfectly pure white.
-
-Very subtle natural blood vessels
-may be visible in the whites of the eyes.
-
-The eyes should have realistic moisture
-and a very subtle natural reflection.
-
-No exaggerated glossy reflection.
-
-No artificial sparkle.
-
-No glowing catchlights.
-
-No glass-like eyes.
-
-Natural individual eyelashes.
-
-Eyelashes should be irregular,
-subtle and realistic.
-
-Do not create extremely long,
-thick,
-perfectly separated eyelashes.
-
-Do not create makeup-like eyelashes.
-
-The eyes should look like real human eyes
-captured by a smartphone camera.
-
-Natural eyelid shadows.
-
-Natural small creases around the eyes.
-
-Very subtle imperfections around the eye area.
-
-No beauty filter around the eyes.
-
-No eye enlargement.
-
-No eye enhancement.
-
-No artificial symmetry.
+No doll-like eyes.
 
 No anime eyes.
 
-No doll eyes.
+No artificial glossy effect.
 
-No CGI eyes.
-
-No fantasy eyes.
-
-No plastic-looking eyes.
-
-The gaze should feel relaxed and natural.
-
-She is looking slightly beside the camera.
-
-The direction of both eyes should be naturally consistent.
-
-The expression around the eyes should be calm
-and slightly curious.
-
-The eyes should look alive,
-but not exaggerated or dramatic.
-
+No exaggerated eyelashes.
 
 SKIN:
 
@@ -402,52 +320,51 @@ No logo.
 No watermark.
 """
 
-    print("🎨 Generating natural Alicia...")
+print("🎨 Generating natural Alicia...")
 
-    encoded_prompt = quote(" ".join(prompt.split()))
+encoded_prompt = quote(" ".join(prompt.split()))
 
-    url = (
-        f"{API_URL}/{encoded_prompt}"
-        "?model=flux"
-        "&width=1024"
-        "&height=1280"
-        "&nologo=true"
-    )
+url = (
+f"{API_URL}/{encoded_prompt}"
+"?model=flux"
+"&width=1024"
+"&height=1280"
+"&nologo=true"
+)
 
-    try:
-        response = requests.get(
-            url,
-            headers={
-                "Authorization": f"Bearer {api_key}"
-            },
-            timeout=180,
-        )
+try:
+response = requests.get(
+url,
+headers={
+"Authorization": f"Bearer {api_key}"
+},
+timeout=180,
+)
 
-        if response.status_code != 200:
-            raise RuntimeError(
-                f"❌ Pollinations error "
-                f"{response.status_code}: {response.text[:1000]}"
-            )
+if response.status_code != 200:
+raise RuntimeError(
+f"❌ Pollinations error "
+f"{response.status_code}: {response.text[:1000]}"
+)
 
-        if not response.content:
-            raise RuntimeError(
-                "❌ Pollinations returned an empty image"
-            )
+if not response.content:
+raise RuntimeError(
+"❌ Pollinations returned an empty image"
+)
 
-        output_file = OUTPUT_DIR / "alicia_test.jpg"
-        output_file.write_bytes(response.content)
+output_file = OUTPUT_DIR / "alicia_test.jpg"
+output_file.write_bytes(response.content)
 
-        print(f"✅ Image saved: {output_file}")
-        print(
-            f"📦 Size: "
-            f"{output_file.stat().st_size / 1024:.1f} KB"
-        )
+print(f"✅ Image saved: {output_file}")
+print(
+f"📦 Size: "
+f"{output_file.stat().st_size / 1024:.1f} KB"
+)
 
-    except requests.RequestException as error:
-        raise RuntimeError(
-            f"❌ Network error while generating image: {error}"
-        ) from error
-
+except requests.RequestException as error:
+raise RuntimeError(
+f"❌ Network error while generating image: {error}"
+) from error
 
 if __name__ == "__main__":
-    generate_image()
+generate_image()
