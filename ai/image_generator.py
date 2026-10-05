@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from urllib.parse import quote
 
+
 import requests
 
 
@@ -20,84 +21,66 @@ def generate_image():
         )
 
     prompt = """
-Create an extremely realistic candid smartphone photograph of Alicia,
-a 21-year-old slim young woman with fair natural skin,
-green eyes and a short black bob haircut.
+A casual unposed photograph of a 21-year-old woman named Alicia.
 
-Alicia is a real-looking young adult woman, not a model,
-not a digital character and not a CGI person.
+She has:
+short straight black bob haircut,
+green eyes,
+fair skin,
+slim natural body,
+soft youthful facial features.
 
-She has a natural human face with subtle asymmetry,
-realistic facial proportions, visible natural skin texture,
-tiny imperfections, pores, very subtle fine lines,
-slightly uneven skin tone and natural lips.
+She is wearing simple modern everyday clothes:
+a fitted neutral-colored top and casual jeans.
 
-Her black bob haircut should look naturally styled,
-with individual hair strands and a few slightly loose strands.
+Alicia is standing outside a small cafe on an ordinary European city street
+in the afternoon.
 
-She is wearing modern casual fashion clothing,
-stylish but believable everyday clothing.
+She is not posing for a photoshoot.
+She is not looking directly at the camera.
+Her body is slightly turned away.
+Her expression is relaxed and spontaneous,
+with a very subtle natural smile.
 
-SCENE:
-Alicia is casually walking through a real European city street
-during a normal sunny afternoon.
+The photograph looks like a normal photo taken by a friend
+using a recent smartphone.
 
-She is looking slightly away from the camera,
-with a relaxed natural facial expression and a subtle playful smile.
+Natural overcast daylight.
+Normal street lighting.
+Natural shadows.
+Natural colors.
+Realistic skin.
+Natural hair.
+Natural clothing folds.
+Natural human proportions.
 
-The photograph should feel spontaneous,
-as if a friend took the photo with a modern iPhone.
+The composition is slightly imperfect,
+like a real spontaneous photograph.
 
-REAL PHOTOGRAPHY:
-natural daylight,
-realistic shadows,
-realistic reflections,
-natural depth of field,
-slight smartphone camera imperfections,
-subtle exposure variation,
-realistic skin tones,
-realistic hair,
-realistic fabric texture,
-natural perspective,
-authentic environmental details.
+Medium shot from approximately chest level.
+35mm smartphone camera perspective.
+Moderate depth of field.
 
-The image must look like an actual photograph taken in real life,
-not an AI-generated portrait.
+Everyday street background with cafes,
+cars and pedestrians slightly out of focus.
 
-Avoid beauty-retouching.
-Avoid perfect skin.
-Avoid perfect symmetry.
-Avoid studio lighting.
-Avoid fashion campaign photography.
-Avoid cinematic CGI appearance.
+Authentic lifestyle photography.
+Natural candid photography.
+Unedited photographic appearance.
 
-No plastic skin.
-No waxy face.
-No doll-like appearance.
-No 3D rendering.
-No illustration.
-No anime.
-No artificial facial features.
-No excessive makeup.
-No unrealistic eyes.
-No over-sharpening.
-No HDR effect.
-No fake bokeh.
+No studio.
+No professional photoshoot.
+No glamour photography.
+No beauty campaign.
+No fashion editorial.
 
-The person must look naturally photographed,
-with believable human anatomy and proportions.
-
-Vertical Instagram portrait photograph,
-4:5 composition,
-high photographic realism,
-natural candid lifestyle photography.
-
+Vertical 4:5 photograph.
 No text.
 No logo.
 No watermark.
 """
 
-    print("🎨 Generating realistic Alicia...")
+    print("🎨 Generating Alicia...")
 
     encoded_prompt = quote(" ".join(prompt.split()))
 
