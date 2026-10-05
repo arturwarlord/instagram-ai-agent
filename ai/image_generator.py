@@ -20,7 +20,7 @@ def generate_image():
         )
 
     prompt = """
-A highly realistic lifestyle photograph of Alicia,
+A highly realistic casual lifestyle photograph of Alicia,
 a 21-year-old adult woman and attractive modern Instagram influencer.
 
 Alicia has:
@@ -28,19 +28,81 @@ short straight black bob haircut,
 natural green eyes,
 fair skin,
 slim feminine body,
-soft attractive facial features,
-natural youthful appearance.
+soft attractive facial features.
 
-She has a naturally beautiful face,
-balanced facial proportions,
-subtle facial asymmetry,
-natural lips,
-natural eyebrows,
-realistic eyes,
-healthy natural skin texture.
+She looks like a real young adult woman photographed
+during an ordinary day.
 
-Her appearance is attractive and polished,
-but still believable and human.
+FACE AND SKIN:
+
+Natural healthy young adult skin.
+
+The skin has realistic photographic texture
+and natural variation across the face.
+
+Subtle natural pores and fine skin texture
+are visible when viewed closely.
+
+Slight natural variation in skin tone.
+
+Very subtle natural redness around the cheeks and nose.
+
+Small natural imperfections that occur on real human skin.
+
+The skin is healthy and attractive,
+but NOT perfectly smooth.
+
+The face has natural texture,
+natural highlights and natural shadows.
+
+Very light everyday makeup,
+not heavy makeup.
+
+Natural lips.
+Natural eyebrows.
+Natural eyelashes.
+
+The face should look attractive without looking retouched.
+
+IMPORTANT SKIN STYLE:
+
+No beauty filter.
+
+No airbrushing.
+
+No skin smoothing.
+
+No porcelain skin.
+
+No plastic skin.
+
+No waxy skin.
+
+No perfectly uniform skin tone.
+
+No flawless artificial complexion.
+
+No excessive makeup.
+
+Do not make the skin look older than 21.
+
+The skin should look like real skin
+captured by a good smartphone camera
+with no beauty filter.
+
+HAIR:
+
+Short straight black bob haircut.
+
+Individual natural hair strands.
+
+A few slightly loose strands around the face.
+
+Natural hair volume.
+
+No perfectly arranged salon hairstyle.
+
+CLOTHING:
 
 She is wearing a stylish modern casual outfit:
 a fitted elegant top,
@@ -48,7 +110,7 @@ high-waisted jeans,
 minimal fashionable accessories.
 
 The outfit is fashionable and flattering,
-but completely appropriate for a lifestyle Instagram account.
+but appropriate for a lifestyle Instagram account.
 
 SCENE:
 
@@ -58,13 +120,13 @@ on a beautiful European city street.
 She is relaxed and confident.
 
 Her posture is natural and feminine.
+
 She is slightly turned toward the camera.
 
 She has a subtle confident smile
 and a relaxed expressive look.
 
-She looks like a real young adult woman
-who is naturally comfortable in front of a camera.
+She looks comfortable rather than posed.
 
 PHOTOGRAPHY:
 
@@ -74,76 +136,84 @@ using a modern smartphone.
 Natural afternoon daylight.
 
 Realistic exposure.
+
 Natural shadows.
+
 Natural reflections.
+
 Natural skin tones.
+
 Natural hair texture.
+
 Natural fabric texture.
 
-Slightly imperfect smartphone photography.
+Realistic smartphone camera rendering.
 
-Realistic camera perspective.
+Slight natural photographic imperfections.
 
 Moderate depth of field.
+
+Natural perspective.
 
 The background contains a real European cafe,
 tables, chairs, pedestrians and city architecture.
 
-The environment should feel completely authentic
+The environment should feel authentic
 and naturally photographed.
 
 The photograph should resemble
 a genuine Instagram photo taken in everyday life.
 
-IMPORTANT:
+CAMERA:
 
-Natural human appearance.
-Natural skin.
-Natural facial proportions.
-Natural body proportions.
-Natural hair strands.
-Natural clothing folds.
-Natural lighting.
+Modern smartphone camera.
 
-Do not make her look like a professional fashion model.
+Natural exposure.
 
-Do not make the image look like a commercial advertising campaign.
+Natural dynamic range.
 
-Do not use excessive beauty retouching.
+No artificial HDR look.
 
-Do not make the skin perfectly smooth.
+No excessive sharpening.
 
-Do not make the face perfectly symmetrical.
+No beauty mode.
 
-Do not use artificial studio lighting.
+No portrait mode skin smoothing.
 
-Do not use dramatic cinematic lighting.
+No artificial face enhancement.
 
-Do not use exaggerated makeup.
+No glamour retouching.
 
-Do not use plastic-looking skin.
+The image should look like the original photograph
+straight from the smartphone camera.
 
-Do not use doll-like facial features.
+OVERALL APPEARANCE:
 
-Do not use CGI aesthetics.
+Beautiful but believable.
 
-Do not use 3D rendering.
+Attractive but natural.
 
-Do not use illustration.
+Well-groomed but not artificially perfect.
 
-Do not use anime style.
+Real human face.
 
-Do not use fantasy aesthetics.
+Real human skin.
 
-Do not use excessive HDR.
+Real human hair.
 
-Do not use excessive sharpening.
+Real human proportions.
 
-Do not create an artificial perfect Instagram influencer look.
+Authentic everyday Instagram lifestyle photography.
 
-The result should look like an authentic photograph
-of a real adult woman taken spontaneously
-during an ordinary day in Europe.
+Do not make her look like a CGI character.
+
+Do not make her look like a 3D render.
+
+Do not make her look like an illustration.
+
+Do not make her look like an AI-generated beauty portrait.
+
+Do not make the photograph look like a professional advertising campaign.
 
 Vertical Instagram photograph.
 4:5 aspect ratio.
@@ -153,7 +223,7 @@ No logo.
 No watermark.
 """
 
-    print("🎨 Generating realistic Alicia...")
+    print("🎨 Generating natural-looking Alicia...")
 
     encoded_prompt = quote(" ".join(prompt.split()))
 
