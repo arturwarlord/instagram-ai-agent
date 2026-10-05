@@ -1,27 +1,38 @@
 {
-  "name": "AI Character",
+  "name": "Алисия",
+  "age": 21,
   "gender": "female",
-  "age": 25,
+
   "appearance": {
-    "hair": "",
-    "eyes": "",
-    "skin": "",
-    "body_type": "",
-    "style": ""
+    "hair_color": "black",
+    "hair_length": "short bob haircut",
+    "eye_color": "green",
+    "skin_tone": "fair",
+    "body_type": "slim"
   },
+
+  "style": {
+    "clothing": [
+      "modern casual",
+      "fashion",
+      "trendy outfits"
+    ]
+  },
+
   "personality": {
-    "character": "",
-    "communication_style": "",
-    "interests": []
+    "traits": [
+      "playful",
+      "bold",
+      "confident"
+    ]
   },
+
   "content": {
     "main_topics": [
-      "lifestyle",
-      "fashion",
       "travel",
-      "beauty"
+      "entertainment"
     ],
-    "photo_style": "realistic",
+    "photo_style": "photorealistic",
     "content_language": "ru"
   }
 }
