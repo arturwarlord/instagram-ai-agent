@@ -337,13 +337,14 @@ Vertical 4:5 composition suitable for an Instagram feed.
         output_file.write_bytes(image_bytes)
 
         history = _load_history()
+        generated_at = datetime.now(timezone.utc).isoformat()
         history.append(
             {
                 "scene_id": scene["id"],
                 "scene": scene["location"],
                 "action": scene["action"],
                 "outfit": clothing,
-                "generated_at": datetime.now(timezone.utc).isoformat(),
+                "generated_at": generated_at,
             }
         )
         _save_history(history)
@@ -351,6 +352,16 @@ Vertical 4:5 composition suitable for an Instagram feed.
         print(f"✅ Image saved: {output_file}")
         print(f"📝 History saved: {HISTORY_FILE}")
         print(f"📦 Size: {output_file.stat().st_size / 1024:.1f} KB")
+
+        return {
+            "image": str(output_file),
+            "scene_id": scene["id"],
+            "scene": scene["location"],
+            "action": scene["action"],
+            "mood": scene["mood"],
+            "outfit": clothing,
+            "generated_at": generated_at,
+        }
 
     except requests.RequestException as error:
         raise RuntimeError(
