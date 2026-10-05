@@ -3,36 +3,72 @@
   "age": 21,
   "gender": "female",
 
+  "identity": {
+    "role": "fictional social media character",
+    "visual_identity": "consistent real-person appearance across posts"
+  },
+
   "appearance": {
-    "hair_color": "black",
-    "hair_length": "short bob haircut",
-    "eye_color": "green",
-    "skin_tone": "fair",
-    "body_type": "slim"
+    "hair_color": "dark brown",
+    "hair_length": "medium length, around the shoulders",
+    "hair_style": "natural, slightly tousled everyday hair",
+    "eye_color": "brown",
+    "skin_tone": "fair natural skin",
+    "body_type": "slim natural build",
+    "face": "natural ordinary young-adult facial proportions, not model-perfect"
   },
 
   "style": {
+    "base": "modern casual",
     "clothing": [
-      "modern casual",
-      "fashion",
-      "trendy outfits"
-    ]
+      "oversized knit sweaters",
+      "simple tops",
+      "casual jackets",
+      "jeans",
+      "minimal jewelry"
+    ],
+    "overall": "realistic everyday European casual style"
   },
 
   "personality": {
     "traits": [
       "playful",
       "bold",
-      "confident"
+      "confident",
+      "natural"
+    ]
+  },
+
+  "visual_direction": {
+    "photo_style": "photorealistic everyday smartphone photography",
+    "mood": "natural, candid, warm and atmospheric",
+    "locations": [
+      "European city streets",
+      "small cafes",
+      "travel locations",
+      "ordinary urban places"
+    ],
+    "lighting": "natural daylight or realistic ambient light",
+    "avoid": [
+      "beauty-filter skin",
+      "plastic skin",
+      "perfect model face",
+      "celebrity-like appearance",
+      "fashion-campaign look",
+      "studio look",
+      "exaggerated facial features",
+      "overly perfect hair"
     ]
   },
 
   "content": {
     "main_topics": [
       "travel",
-      "entertainment"
+      "entertainment",
+      "everyday life",
+      "cafes",
+      "city walks"
     ],
-    "photo_style": "photorealistic",
     "content_language": "ru"
   }
 }
