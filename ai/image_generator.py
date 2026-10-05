@@ -44,8 +44,13 @@ Average natural facial proportions.
 
 Soft oval face.
 
-She is naturally attractive,
-but not exceptionally beautiful.
+She has an ordinary, believable appearance.
+
+She is not styled to look exceptionally beautiful.
+
+Her appearance is interesting because
+she looks like a real individual person,
+not because of perfect facial features.
 
 Her face has ordinary human characteristics
 and natural individual variation.
@@ -67,29 +72,55 @@ Do not make her look like a commercial model.
 
 SKIN:
 
-Real young adult skin.
+Unretouched real human skin.
 
-Visible but subtle natural skin texture.
+Natural visible skin texture.
 
-Natural pores.
+Visible pores, especially around the nose,
+cheeks and forehead.
 
-Natural variation in skin tone.
+Subtle uneven skin texture.
 
-Very subtle imperfections.
+Very small natural blemishes.
+
+Tiny imperfections and minor variations
+in skin tone.
+
+Some areas of the skin are slightly smoother
+while other areas have more visible texture.
+
+Very subtle redness around the nose and cheeks.
+
+Natural under-eye texture.
+
+Natural skin creases.
+
+Natural variation in skin color.
+
+The skin must NOT look smooth or polished.
+
+The skin must NOT look airbrushed.
+
+The skin must NOT look porcelain.
+
+The skin must NOT look waxy.
+
+The skin must NOT look plastic.
+
+The skin must NOT look digitally retouched.
 
 No beauty filter.
 
-No airbrushing.
+No skin smoothing.
 
-No plastic skin.
+No flawless complexion.
 
-No porcelain skin.
+No perfect skin.
 
-No excessive skin smoothing.
+No artificial skin texture.
 
-No artificial retouching.
-
-No perfect flawless skin.
+The photograph should preserve
+the natural texture of real young adult skin.
 
 HAIR:
 
@@ -107,41 +138,49 @@ No salon-perfect hairstyle.
 
 FACE:
 
-Natural ordinary human face.
+An ordinary real human face.
 
-Realistic proportions.
+Natural facial proportions with normal
+individual variation.
 
-Natural facial structure.
+The face should NOT look symmetrical or perfectly balanced.
 
-Natural eyebrows.
+Natural differences between the two sides of the face.
 
-Natural eyes.
+Normal human nose with a slightly individual shape.
 
-Natural nose.
+Natural lips with ordinary proportions.
 
-Natural lips.
+Natural cheeks and jawline.
 
-Everything should look physically believable
-and consistent with a real human face.
+Natural eyebrows with slightly uneven shape.
 
-Do not exaggerate any facial feature.
+The face should have small ordinary characteristics
+that make it look like a specific real person.
 
-Do not make the face perfectly symmetrical.
+Do not make the face conventionally beautiful.
+
+Do not make the facial features perfectly aligned.
+
+Do not make the nose perfectly straight.
+
+Do not make the lips perfectly symmetrical.
+
+Do not make the jawline perfectly defined.
+
+Do not make the cheekbones sculpted.
+
+Do not create a beauty-model face.
+
+Do not create an Instagram-model face.
+
+Do not create a celebrity face.
 
 Do not create a generic AI beauty face.
 
-EXPRESSION:
-
-Relaxed natural expression.
-
-Very subtle friendly smile.
-
-Natural relaxed eyes.
-
-She looks slightly away from the camera.
-
-The expression should feel spontaneous,
-not posed.
+The face should look like a completely ordinary
+21-year-old woman photographed unexpectedly
+during everyday life.
 
 CLOTHING:
 
