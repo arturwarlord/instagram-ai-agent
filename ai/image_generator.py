@@ -70,57 +70,96 @@ Do not make her look like an Instagram influencer.
 
 Do not make her look like a commercial model.
 
+NOSE:
+
+A normal human nose with a natural individual shape.
+
+Moderate natural width and length.
+
+The nose should look completely ordinary
+and physically believable.
+
+Natural nostrils.
+
+Natural transition between the nose
+and the cheeks.
+
+The nose should not look sculpted,
+refined or cosmetically enhanced.
+
+No tiny nose.
+
+No perfectly straight nose.
+
+No sharp nose bridge.
+
+No model-like nose.
+
+No plastic-surgery appearance.
+
+LIPS:
+
+Natural human lips with ordinary proportions.
+
+Moderate natural lip volume.
+
+Natural upper and lower lip proportions.
+
+Natural lip edges.
+
+Subtle natural variation in lip shape.
+
+The lips should look soft and real,
+not perfectly defined.
+
+No oversized lips.
+
+No extremely full lips.
+
+No perfectly symmetrical lips.
+
+No glossy lipstick effect.
+
+No filler-like appearance.
+
+No cosmetic enhancement.
+
 SKIN:
 
-Unretouched real human skin.
+Real unretouched human skin.
 
-Natural visible skin texture.
+Natural skin texture visible in the photograph.
 
-Visible pores, especially around the nose,
-cheeks and forehead.
+Visible pores and subtle fine texture.
 
-Subtle uneven skin texture.
+Small natural variations in skin tone.
 
-Very small natural blemishes.
+Very subtle imperfections.
 
-Tiny imperfections and minor variations
-in skin tone.
+Natural texture around the nose and mouth.
 
-Some areas of the skin are slightly smoother
-while other areas have more visible texture.
+Natural texture on the cheeks and forehead.
 
-Very subtle redness around the nose and cheeks.
-
-Natural under-eye texture.
-
-Natural skin creases.
-
-Natural variation in skin color.
-
-The skin must NOT look smooth or polished.
-
-The skin must NOT look airbrushed.
-
-The skin must NOT look porcelain.
-
-The skin must NOT look waxy.
-
-The skin must NOT look plastic.
-
-The skin must NOT look digitally retouched.
+The skin should have the uneven texture
+of a real young adult photographed up close.
 
 No beauty filter.
 
+No airbrushing.
+
 No skin smoothing.
 
-No flawless complexion.
+No porcelain skin.
 
-No perfect skin.
+No waxy skin.
 
-No artificial skin texture.
+No plastic skin.
 
-The photograph should preserve
-the natural texture of real young adult skin.
+No flawless skin.
+
+No artificial retouching.
+
+No digitally perfect complexion.
 
 HAIR:
 
