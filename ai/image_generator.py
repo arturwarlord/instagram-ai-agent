@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 from urllib.parse import quote
 
-
 import requests
 
 
@@ -21,66 +20,140 @@ def generate_image():
         )
 
     prompt = """
-A casual unposed photograph of a 21-year-old woman named Alicia.
+A highly realistic lifestyle photograph of Alicia,
+a 21-year-old adult woman and attractive modern Instagram influencer.
 
-She has:
+Alicia has:
 short straight black bob haircut,
-green eyes,
+natural green eyes,
 fair skin,
-slim natural body,
-soft youthful facial features.
+slim feminine body,
+soft attractive facial features,
+natural youthful appearance.
 
-She is wearing simple modern everyday clothes:
-a fitted neutral-colored top and casual jeans.
+She has a naturally beautiful face,
+balanced facial proportions,
+subtle facial asymmetry,
+natural lips,
+natural eyebrows,
+realistic eyes,
+healthy natural skin texture.
 
-Alicia is standing outside a small cafe on an ordinary European city street
-in the afternoon.
+Her appearance is attractive and polished,
+but still believable and human.
 
-She is not posing for a photoshoot.
-She is not looking directly at the camera.
-Her body is slightly turned away.
-Her expression is relaxed and spontaneous,
-with a very subtle natural smile.
+She is wearing a stylish modern casual outfit:
+a fitted elegant top,
+high-waisted jeans,
+minimal fashionable accessories.
 
-The photograph looks like a normal photo taken by a friend
-using a recent smartphone.
+The outfit is fashionable and flattering,
+but completely appropriate for a lifestyle Instagram account.
 
-Natural overcast daylight.
-Normal street lighting.
+SCENE:
+
+Alicia is sitting at an outdoor cafe
+on a beautiful European city street.
+
+She is relaxed and confident.
+
+Her posture is natural and feminine.
+She is slightly turned toward the camera.
+
+She has a subtle confident smile
+and a relaxed expressive look.
+
+She looks like a real young adult woman
+who is naturally comfortable in front of a camera.
+
+PHOTOGRAPHY:
+
+The photograph was taken casually by a friend
+using a modern smartphone.
+
+Natural afternoon daylight.
+
+Realistic exposure.
 Natural shadows.
-Natural colors.
-Realistic skin.
-Natural hair.
-Natural clothing folds.
-Natural human proportions.
+Natural reflections.
+Natural skin tones.
+Natural hair texture.
+Natural fabric texture.
 
-The composition is slightly imperfect,
-like a real spontaneous photograph.
+Slightly imperfect smartphone photography.
 
-Medium shot from approximately chest level.
-35mm smartphone camera perspective.
+Realistic camera perspective.
+
 Moderate depth of field.
 
-Everyday street background with cafes,
-cars and pedestrians slightly out of focus.
+The background contains a real European cafe,
+tables, chairs, pedestrians and city architecture.
 
-Authentic lifestyle photography.
-Natural candid photography.
-Unedited photographic appearance.
+The environment should feel completely authentic
+and naturally photographed.
 
-No studio.
-No professional photoshoot.
-No glamour photography.
-No beauty campaign.
-No fashion editorial.
+The photograph should resemble
+a genuine Instagram photo taken in everyday life.
 
-Vertical 4:5 photograph.
+IMPORTANT:
+
+Natural human appearance.
+Natural skin.
+Natural facial proportions.
+Natural body proportions.
+Natural hair strands.
+Natural clothing folds.
+Natural lighting.
+
+Do not make her look like a professional fashion model.
+
+Do not make the image look like a commercial advertising campaign.
+
+Do not use excessive beauty retouching.
+
+Do not make the skin perfectly smooth.
+
+Do not make the face perfectly symmetrical.
+
+Do not use artificial studio lighting.
+
+Do not use dramatic cinematic lighting.
+
+Do not use exaggerated makeup.
+
+Do not use plastic-looking skin.
+
+Do not use doll-like facial features.
+
+Do not use CGI aesthetics.
+
+Do not use 3D rendering.
+
+Do not use illustration.
+
+Do not use anime style.
+
+Do not use fantasy aesthetics.
+
+Do not use excessive HDR.
+
+Do not use excessive sharpening.
+
+Do not create an artificial perfect Instagram influencer look.
+
+The result should look like an authentic photograph
+of a real adult woman taken spontaneously
+during an ordinary day in Europe.
+
+Vertical Instagram photograph.
+4:5 aspect ratio.
+
 No text.
 No logo.
 No watermark.
 """
 
-    print("🎨 Generating Alicia...")
+    print("🎨 Generating realistic Alicia...")
 
     encoded_prompt = quote(" ".join(prompt.split()))
 
