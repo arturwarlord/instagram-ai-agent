@@ -79,6 +79,126 @@ who could realistically exist in everyday life.
 Her appearance should be attractive in a normal,
 unremarkable human way.
 
+
+EYES:
+
+Realistic natural human eyes.
+
+The eyes are medium-sized and naturally proportioned
+for her face.
+
+Do not make the eyes large,
+oversized,
+perfectly round,
+or doll-like.
+
+The eye shape should be naturally slightly almond-shaped
+with realistic human proportions.
+
+The upper eyelids should have natural folds
+and subtle variation.
+
+The lower eyelids should have realistic natural contours.
+
+The two eyes should have very slight natural differences
+in shape, position and openness.
+
+Do not make the eyes perfectly symmetrical.
+
+The irises are naturally green.
+
+The green color should be realistic,
+soft and slightly muted.
+
+Do not use neon green.
+
+Do not use extremely bright green.
+
+Do not make the eyes glow.
+
+The irises should contain complex natural patterns,
+subtle radial fibers,
+small variations in green and darker tones,
+and irregular natural details.
+
+The iris should NOT look like
+a perfectly smooth painted circle.
+
+The pupils should be naturally sized
+and realistically positioned.
+
+Do not make the pupils unnaturally large.
+
+The whites of the eyes should have
+slight natural color variation.
+
+Do not make the sclera perfectly pure white.
+
+Very subtle natural blood vessels
+may be visible in the whites of the eyes.
+
+The eyes should have realistic moisture
+and a very subtle natural reflection.
+
+No exaggerated glossy reflection.
+
+No artificial sparkle.
+
+No glowing catchlights.
+
+No glass-like eyes.
+
+Natural individual eyelashes.
+
+Eyelashes should be irregular,
+subtle and realistic.
+
+Do not create extremely long,
+thick,
+perfectly separated eyelashes.
+
+Do not create makeup-like eyelashes.
+
+The eyes should look like real human eyes
+captured by a smartphone camera.
+
+Natural eyelid shadows.
+
+Natural small creases around the eyes.
+
+Very subtle imperfections around the eye area.
+
+No beauty filter around the eyes.
+
+No eye enlargement.
+
+No eye enhancement.
+
+No artificial symmetry.
+
+No anime eyes.
+
+No doll eyes.
+
+No CGI eyes.
+
+No fantasy eyes.
+
+No plastic-looking eyes.
+
+The gaze should feel relaxed and natural.
+
+She is looking slightly beside the camera.
+
+The direction of both eyes should be naturally consistent.
+
+The expression around the eyes should be calm
+and slightly curious.
+
+The eyes should look alive,
+but not exaggerated or dramatic.
+
+
 SKIN:
 
 Natural young adult skin.
