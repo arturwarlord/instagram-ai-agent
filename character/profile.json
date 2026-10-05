@@ -1,0 +1,27 @@
+{
+  "name": "AI Character",
+  "gender": "female",
+  "age": 25,
+  "appearance": {
+    "hair": "",
+    "eyes": "",
+    "skin": "",
+    "body_type": "",
+    "style": ""
+  },
+  "personality": {
+    "character": "",
+    "communication_style": "",
+    "interests": []
+  },
+  "content": {
+    "main_topics": [
+      "lifestyle",
+      "fashion",
+      "travel",
+      "beauty"
+    ],
+    "photo_style": "realistic",
+    "content_language": "ru"
+  }
+}
