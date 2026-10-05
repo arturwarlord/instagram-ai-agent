@@ -1,6 +1,8 @@
+import base64
+import json
 import os
+import re
 from pathlib import Path
-from urllib.parse import quote
 
 import requests
 
@@ -8,332 +10,160 @@ import requests
 OUTPUT_DIR = Path("content/generated")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-API_URL = "https://gen.pollinations.ai/image"
+REFERENCE_IMAGE = Path("character/reference/alicia.jpg")
+API_URL = "https://gen.pollinations.ai/v1/images/edits"
+MODEL = "black-forest-labs/flux.1-kontext-pro"
+
+
+def _extract_image(response):
+    content_type = response.headers.get("content-type", "").lower()
+
+    if content_type.startswith("image/"):
+        return response.content
+
+    try:
+        data = response.json()
+    except ValueError as error:
+        raise RuntimeError(
+            f"❌ Pollinations returned an unexpected response: "
+            f"{response.text[:1000]}"
+        ) from error
+
+    items = data.get("data") or []
+    if not items:
+        raise RuntimeError(
+            f"❌ Pollinations returned no image: {json.dumps(data)[:1500]}"
+        )
+
+    item = items[0]
+
+    b64 = item.get("b64_json")
+    if b64:
+        return base64.b64decode(b64)
+
+    image_url = item.get("url")
+    if image_url:
+        image_response = requests.get(image_url, timeout=180)
+        image_response.raise_for_status()
+        return image_response.content
+
+    raise RuntimeError(
+        f"❌ Pollinations response does not contain an image: "
+        f"{json.dumps(item)[:1500]}"
+    )
 
 
 def generate_image():
     api_key = os.getenv("POLLINATIONS_API_KEY")
 
     if not api_key:
+        raise RuntimeError("❌ POLLINATIONS_API_KEY is not configured")
+
+    if not REFERENCE_IMAGE.exists():
         raise RuntimeError(
-            "❌ POLLINATIONS_API_KEY is not configured"
+            f"❌ Alicia reference image not found: {REFERENCE_IMAGE}"
         )
 
     prompt = """
-A realistic everyday smartphone photograph
-of a real 21-year-old adult woman named Alicia.
+Use the supplied reference photo as the identity reference for Alicia.
 
-She looks like a normal young woman
-in an ordinary everyday situation.
+Create a new photorealistic everyday smartphone photograph of the SAME
+adult woman from the reference image.
 
-She does not look like a model,
-celebrity or influencer.
+IDENTITY PRIORITY:
+Preserve her recognizable identity from the reference:
+same face, same natural facial proportions, same eyes, same nose, same lips,
+same eyebrows, same skin tone, same dark-brown medium-length hair and the
+same overall natural appearance.
 
-APPEARANCE:
+Do NOT redesign her face.
+Do NOT make her more beautiful.
+Do NOT make her younger or older.
+Do NOT turn her into a model, celebrity or generic AI woman.
 
-21-year-old woman.
+The reference image is the source of truth for her appearance.
 
-Medium-length dark brown hair.
+NEW SCENE:
+Alicia is walking through a quiet European city street in early autumn.
+She has just left a small cafe and is casually holding a takeaway coffee.
+She wears a simple dark oversized knit sweater, straight jeans and minimal
+silver jewelry.
 
-Brown eyes.
+She is not posing for a professional photoshoot. The photo looks like a
+friend casually took it with a modern smartphone.
 
-Fair skin.
+PHOTOGRAPHY:
+Natural daylight, realistic ambient light, ordinary smartphone perspective,
+natural exposure, realistic colors, slight natural photographic softness,
+realistic skin texture, subtle pores and small natural imperfections.
 
-Slim natural body.
-
-Ordinary facial proportions.
-
-Her appearance is normal and believable.
-
-She should look like a real individual person,
-not an idealized beauty.
+FACE AND SKIN:
+Keep the natural face from the reference exactly as the identity anchor.
+Natural eyes and eyelids, natural nose, natural lips, natural eyebrows.
+Real human skin with normal texture and tiny imperfections.
+No beauty filter, no airbrushing, no plastic or porcelain skin,
+no excessive smoothing, no face enhancement.
 
 HAIR:
+Keep the same dark-brown medium-length hair identity from the reference.
+Natural everyday styling, slightly imperfect, not salon-perfect.
 
-Medium-length dark brown hair.
+IMPORTANT:
+Only change the scene, pose, clothing details and environment.
+The person herself must remain recognizably the same Alicia.
 
-Simple natural everyday hairstyle.
+No CGI, no illustration, no 3D render, no fashion campaign,
+no studio portrait, no glamour retouching, no exaggerated facial features,
+no text, no logo, no watermark.
 
-Straight natural hair.
-
-The hair should look normal and believable
-for an ordinary young woman.
-
-No elaborate hairstyle.
-No salon styling.
-No dramatic volume.
-No perfectly arranged hair.
-No exaggerated individual hair strands.
-
-FACE:
-
-Ordinary young woman's face.
-
-Natural normal facial proportions.
-
-Normal nose.
-
-Normal lips.
-
-Normal eyes.
-
-Natural eyebrows.
-
-The facial features should look
-like normal human features.
-
-Do not emphasize the cheekbones.
-
-Do not sculpt the cheeks.
-
-Do not create sharp cheekbones.
-
-Do not create a strongly defined jawline.
-
-Do not create a model-like face.
-
-Do not create a beauty-model face.
-
-Do not create a celebrity face.
-
-Do not create a generic AI beauty face.
-
-The face should simply look
-like a normal real person.
-
-NOSE:
-
-Normal human nose.
-
-Natural ordinary shape.
-
-Normal width and length.
-
-The nose should not attract
-special attention in the image.
-
-No tiny nose.
-No extremely narrow nose.
-No sculpted nose.
-No cosmetic-surgery appearance.
-
-LIPS:
-
-Natural ordinary human lips.
-
-Normal lip proportions.
-
-Natural lip shape.
-
-The lips should not attract
-special attention in the image.
-
-No oversized lips.
-No exaggerated volume.
-No filler-like appearance.
-No glossy artificial lips.
-
-SKIN:
-
-Normal real human skin.
-
-Natural skin color.
-
-Natural photographic appearance.
-
-The skin should look like
-ordinary skin in a smartphone photograph.
-
-No beauty filter.
-No airbrushing.
-No retouching.
-No porcelain skin.
-No waxy skin.
-No plastic skin.
-No artificial skin effect.
-No excessive smoothing.
-
-CLOTHING:
-
-Simple everyday casual clothing.
-
-Plain T-shirt.
-
-Light casual jacket.
-
-Simple jeans.
-
-Minimal accessories.
-
-Normal everyday outfit.
-
-No luxury fashion.
-No designer clothing.
-No glamorous styling.
-
-SCENE:
-
-A normal European city street.
-
-Small outdoor cafe nearby.
-
-Ordinary buildings.
-
-Cars parked nearby.
-
-A few distant pedestrians.
-
-Normal everyday environment.
-
-Nothing spectacular.
-
-The photograph looks like
-a friend casually photographed her
-while they were walking around the city.
-
-She is not posing for a professional photoshoot.
-
-CAMERA:
-
-Modern smartphone camera.
-
-Ordinary smartphone photograph.
-
-Natural smartphone perspective.
-
-Natural exposure.
-
-Natural colors.
-
-Natural contrast.
-
-Normal smartphone image quality.
-
-Slight natural photographic softness.
-
-No professional photography.
-
-No studio photography.
-
-No fashion photography.
-
-No cinematic photography.
-
-No HDR.
-
-No excessive sharpening.
-
-No beauty mode.
-
-No face enhancement.
-
-No artificial bokeh.
-
-LIGHTING:
-
-Ordinary natural daylight.
-
-Soft daylight.
-
-Natural shadows.
-
-Natural illumination.
-
-No studio lighting.
-
-No dramatic lighting.
-
-No glamour lighting.
-
-No cinematic lighting.
-
-No artificial glow.
-
-OVERALL:
-
-The most important goal is
-a believable ordinary human photograph.
-
-The woman should look like
-a real person photographed casually
-with a smartphone.
-
-The image should not look
-like a beauty advertisement.
-
-The image should not look
-like a fashion campaign.
-
-The image should not look
-like an AI-generated influencer.
-
-Keep the face, hair and skin
-simple and natural.
-
-Do not exaggerate facial features.
-
-Do not exaggerate hair.
-
-Do not exaggerate skin texture.
-
-No CGI.
-
-No 3D rendering.
-
-No illustration.
-
-No digital painting.
-
-No fantasy.
-
-No text.
-
-No logo.
-
-No watermark.
-
-Vertical 4:5 photograph.
+Vertical 4:5 composition suitable for an Instagram feed.
 """
 
-    print("🎨 Generating realistic Alicia...")
-
-    encoded_prompt = quote(" ".join(prompt.split()))
-
-    url = (
-        f"{API_URL}/{encoded_prompt}"
-        "?model=flux"
-        "&width=1024"
-        "&height=1280"
-        "&nologo=true"
-    )
+    print("🎨 Generating a new Alicia photo using the reference image...")
+    print(f"🧬 Identity reference: {REFERENCE_IMAGE}")
 
     try:
-        response = requests.get(
-            url,
-            headers={
-                "Authorization": f"Bearer {api_key}"
-            },
-            timeout=180,
-        )
+        with REFERENCE_IMAGE.open("rb") as image_file:
+            files = {
+                "image": (
+                    REFERENCE_IMAGE.name,
+                    image_file,
+                    "image/jpeg",
+                )
+            }
+
+            response = requests.post(
+                API_URL,
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                },
+                data={
+                    "model": MODEL,
+                    "prompt": " ".join(prompt.split()),
+                    "size": "1024x1280",
+                    "response_format": "b64_json",
+                },
+                files=files,
+                timeout=300,
+            )
 
         if response.status_code != 200:
             raise RuntimeError(
-                f"❌ Pollinations error "
-                f"{response.status_code}: {response.text[:1000]}"
+                f"❌ Pollinations error {response.status_code}: "
+                f"{response.text[:1500]}"
             )
 
-        if not response.content:
-            raise RuntimeError(
-                "❌ Pollinations returned an empty image"
-            )
+        image_bytes = _extract_image(response)
+
+        if not image_bytes:
+            raise RuntimeError("❌ Pollinations returned an empty image")
 
         output_file = OUTPUT_DIR / "alicia_test.jpg"
-        output_file.write_bytes(response.content)
+        output_file.write_bytes(image_bytes)
 
         print(f"✅ Image saved: {output_file}")
         print(
-            f"📦 Size: "
-            f"{output_file.stat().st_size / 1024:.1f} KB"
+            f"📦 Size: {output_file.stat().st_size / 1024:.1f} KB"
         )
 
     except requests.RequestException as error:
