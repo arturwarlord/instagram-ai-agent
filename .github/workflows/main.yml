@@ -26,5 +26,5 @@ jobs:
 
       - name: Run AI Agent
         env:
-          FAL_KEY: ${{ secrets.FAL_KEY }}
+          POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
         run: python main.py
