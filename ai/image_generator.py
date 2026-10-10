@@ -42,7 +42,7 @@ SCENES = [
     {
         "id": "train_station",
         "location": "a modern European train station",
-        ""action": "waiting near the platform with exactly one simple everyday shoulder bag, carried naturally at her side",
+        "action": "waiting near the platform with exactly one simple everyday shoulder bag, carried naturally at her side",
         "mood": "casual beginning-of-a-trip feeling",
     },
     {
