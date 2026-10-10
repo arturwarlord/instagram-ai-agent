@@ -42,7 +42,7 @@ SCENES = [
     {
         "id": "train_station",
         "location": "a modern European train station",
-        "action": "waiting near the platform with a small everyday travel bag",
+        ""action": "waiting near the platform with exactly one simple everyday shoulder bag, carried naturally at her side",
         "mood": "casual beginning-of-a-trip feeling",
     },
     {
@@ -219,6 +219,17 @@ def generate_image():
 
     clothing = random.choice(clothing_options)
 
+    object_guidance = ""
+    if scene["id"] == "train_station":
+        object_guidance = """
+BAG REALISM — IMPORTANT:
+Show exactly ONE ordinary everyday shoulder bag. No second bag, no duplicate bag, no extra handbag in the background.
+Choose a simple, believable design with a soft matte leather or durable woven-fabric surface, a clear practical shape, and only a few understated details.
+The handle and shoulder strap must be continuous, correctly attached, and physically plausible. No tangled straps, broken handles, melted hardware, warped seams, or impossible geometry.
+The bag hangs naturally at Alicia’s side with realistic weight, folds, perspective, and contact shadows. Its lighting, sharpness, and colors must match the same photograph and environment.
+Avoid glossy plastic surfaces, perfect showroom styling, decorative clutter, complex buckles, logos, labels, and readable text. The bag must look like a real object captured by a phone camera, not a pasted-in product image.
+"""
+
     prompt = f"""
 Use the supplied reference photo as the identity reference for Alicia.
 
@@ -253,6 +264,8 @@ Natural daylight or realistic ambient light, ordinary smartphone perspective,
 natural exposure, realistic colors, slight natural photographic softness,
 realistic skin texture, subtle pores and small natural imperfections.
 Use a believable candid composition rather than a centered studio portrait.
+
+{object_guidance}
 
 FACE AND SKIN:
 Keep the natural face from the reference exactly as the identity anchor.
