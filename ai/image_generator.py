@@ -6,7 +6,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
-from huggingface_hub import InferenceClient
 
 
 OUTPUT_DIR = Path("content/generated")
@@ -15,7 +14,8 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 REFERENCE_IMAGE = Path("character/reference/alicia.jpg")
 HISTORY_FILE = Path("data/generation_history.json")
 
-MODEL = "black-forest-labs/FLUX.2-klein-9B"
+API_URL = "https://gen.pollinations.ai/v1/images/edits"
+MODEL = "black-forest-labs/flux.1-kontext-pro"
 
 
 SCENES = [
@@ -298,22 +298,43 @@ Vertical 4:5 composition suitable for an Instagram feed.
     print(f"👗 Outfit: {clothing}")
 
     try:
-        client = InferenceClient(
-            provider="auto",
-            api_key=api_key,
-        )
-
         with REFERENCE_IMAGE.open("rb") as image_file:
-            reference_bytes = image_file.read()
+            files = {
+                "image": (
+                    REFERENCE_IMAGE.name,
+                    image_file,
+                    "image/jpeg",
+                )
+            }
 
-        generated_image = client.image_to_image(
-            reference_bytes,
-            prompt=" ".join(prompt.split()),
-            model=MODEL,
-        )
+            response = requests.post(
+                API_URL,
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                },
+                data={
+                    "model": MODEL,
+                    "prompt": " ".join(prompt.split()),
+                    "size": "1024x1280",
+                    "response_format": "b64_json",
+                },
+                files=files,
+                timeout=300,
+            )
+
+        if response.status_code != 200:
+            raise RuntimeError(
+                f"❌ Pollinations error {response.status_code}: "
+                f"{response.text[:1500]}"
+            )
+
+        image_bytes = _extract_image(response)
+
+        if not image_bytes:
+            raise RuntimeError("❌ Pollinations returned an empty image")
 
         output_file = OUTPUT_DIR / "alicia_test.jpg"
-        generated_image.convert("RGB").save(output_file, format="JPEG", quality=94)
+        output_file.write_bytes(image_bytes)
 
         history = _load_history()
         generated_at = datetime.now(timezone.utc).isoformat()
@@ -342,14 +363,10 @@ Vertical 4:5 composition suitable for an Instagram feed.
             "generated_at": generated_at,
         }
 
-    except Exception as error:
-        message = str(error)
-        if "402" in message or "credit" in message.lower() or "payment" in message.lower():
-            raise RuntimeError(
-                "❌ Hugging Face inference credits may be exhausted or this model requires paid credits. "
-                "No paid fallback is configured. Details: " + message[:1200]
-            ) from error
-        raise RuntimeError(f"❌ Hugging Face image generation failed: {message[:1500]}") from error
+    except requests.RequestException as error:
+        raise RuntimeError(
+            f"❌ Network error while generating image: {error}"
+        ) from error
 
 
 if __name__ == "__main__":
