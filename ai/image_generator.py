@@ -377,7 +377,8 @@ Vertical 4:5 composition suitable for an Instagram feed.
         try:
             with Image.open(io.BytesIO(image_bytes)) as generated:
                 generated.load()
-                output_file = OUTPUT_DIR / "alicia_test.png"
+                filename_timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S_%f")
+                output_file = OUTPUT_DIR / f"alicia_{filename_timestamp}.png"
                 generated.convert("RGB").save(output_file, format="PNG")
         except Exception as error:
             raise RuntimeError("❌ Cloudflare response was not a valid image") from error
