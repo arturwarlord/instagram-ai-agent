@@ -5,9 +5,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
+from huggingface_hub import InferenceClient
 
-API_URL = "https://gen.pollinations.ai/v1/chat/completions"
-MODEL = "openai/gpt-5.4-nano"
+MODEL = "openai/gpt-oss-20b:fastest"
 POSTS_DIR = Path("content/posts")
 HISTORY_FILE = Path("data/caption_history.json")
 
@@ -38,9 +38,9 @@ def _clean_caption(text):
 
 
 def generate_caption(image_info):
-    api_key = os.getenv("POLLINATIONS_API_KEY")
+    api_key = os.getenv("HF_TOKEN")
     if not api_key:
-        raise RuntimeError("❌ POLLINATIONS_API_KEY is not configured")
+        raise RuntimeError("❌ HF_TOKEN is not configured")
 
     history = _load_history()
     previous = "\n".join(
@@ -76,38 +76,22 @@ def generate_caption(image_info):
     print("✍️ Generating Alicia caption...")
 
     try:
-        response = requests.post(
-            API_URL,
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-            },
-            json={
-                "model": MODEL,
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt},
-                ],
-                "temperature": 0.9,
-                "max_tokens": 220,
-            },
-            timeout=120,
+        client = InferenceClient(
+            provider="auto",
+            api_key=api_key,
         )
-        if response.status_code != 200:
-            raise RuntimeError(
-                f"❌ Pollinations caption error {response.status_code}: {response.text[:1500]}"
-            )
-
-        data = response.json()
-        choices = data.get("choices") or []
-        if not choices:
-            raise RuntimeError(f"❌ No caption returned: {json.dumps(data)[:1500]}")
-
-        caption = _clean_caption(
-            choices[0].get("message", {}).get("content", "")
+        response = client.chat.completions.create(
+            model=MODEL,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            temperature=0.9,
+            max_tokens=220,
         )
+        caption = _clean_caption(response.choices[0].message.content or "")
         if not caption:
-            raise RuntimeError("❌ Pollinations returned an empty caption")
+            raise RuntimeError("❌ Hugging Face returned an empty caption")
 
         POSTS_DIR.mkdir(parents=True, exist_ok=True)
         created_at = datetime.now(timezone.utc).isoformat()
@@ -133,7 +117,11 @@ def generate_caption(image_info):
 
         return post
 
-    except requests.RequestException as error:
-        raise RuntimeError(
-            f"❌ Network error while generating caption: {error}"
-        ) from error
+    except Exception as error:
+        message = str(error)
+        if "402" in message or "credit" in message.lower() or "payment" in message.lower():
+            raise RuntimeError(
+                "❌ Hugging Face inference credits may be exhausted or this model requires paid credits. "
+                "No paid fallback is configured. Details: " + message[:1200]
+            ) from error
+        raise RuntimeError(f"❌ Hugging Face caption generation failed: {message[:1500]}") from error
