@@ -177,6 +177,22 @@ def _choose_scene():
     return random.choice(available)
 
 
+def _choose_varied_option(options, history_key, recent_count=4):
+    """Avoid repeating the same outfit, pose, framing, or gaze too often."""
+    history = _load_history()
+    recent_values = {
+        item.get(history_key)
+        for item in history[-recent_count:]
+        if item.get(history_key)
+    }
+    available = [option for option in options if option not in recent_values]
+
+    if not available:
+        available = list(options)
+
+    return random.choice(available)
+
+
 def _extract_image(response):
     content_type = response.headers.get("content-type", "").lower()
     if content_type.startswith("image/"):
@@ -217,7 +233,7 @@ def generate_image():
         "a simple neutral cardigan, straight jeans and minimal silver jewelry",
     ]
 
-    clothing = random.choice(clothing_options)
+    clothing = _choose_varied_option(clothing_options, "outfit", recent_count=3)
 
     # Vary framing, body language, and gaze so photos do not all look like centered portraits.
     composition_options = [
@@ -245,9 +261,9 @@ def generate_image():
         "Her face is shown in a natural side or three-quarter view, not a straight-on portrait.",
     ]
 
-    composition = random.choice(composition_options)
-    pose = random.choice(pose_options)
-    gaze = random.choice(gaze_options)
+    composition = _choose_varied_option(composition_options, "composition", recent_count=4)
+    pose = _choose_varied_option(pose_options, "pose", recent_count=4)
+    gaze = _choose_varied_option(gaze_options, "gaze", recent_count=4)
 
     object_guidance = ""
     if scene["id"] == "train_station":
@@ -374,6 +390,9 @@ Vertical 4:5 composition suitable for an Instagram feed.
                 "scene": scene["location"],
                 "action": scene["action"],
                 "outfit": clothing,
+                "composition": composition,
+                "pose": pose,
+                "gaze": gaze,
                 "generated_at": generated_at,
             }
         )
@@ -390,6 +409,9 @@ Vertical 4:5 composition suitable for an Instagram feed.
             "action": scene["action"],
             "mood": scene["mood"],
             "outfit": clothing,
+            "composition": composition,
+            "pose": pose,
+            "gaze": gaze,
             "generated_at": generated_at,
         }
 
