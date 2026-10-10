@@ -219,6 +219,36 @@ def generate_image():
 
     clothing = random.choice(clothing_options)
 
+    # Vary framing, body language, and gaze so photos do not all look like centered portraits.
+    composition_options = [
+        "Place Alicia off-center in the left third of the frame, with the real location visible around her.",
+        "Place Alicia off-center in the right third of the frame, leaving natural breathing room on the other side.",
+        "Use a wider environmental composition showing more of the street or interior, with Alicia not filling the whole frame.",
+        "Photograph her from a slight side angle in a relaxed three-quarter view, not straight-on.",
+        "Use a casual candid composition with slightly imperfect framing, as if a friend took the photo spontaneously.",
+        "Frame her from a little farther away, showing her natural posture and more of the surrounding environment.",
+    ]
+    pose_options = [
+        "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
+        "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
+        "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
+        "She is caught in a natural in-between moment, casually adjusting her sleeve or jacket.",
+        "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
+        "When appropriate for the scene, she sits or stands at an angle rather than squarely facing the camera.",
+    ]
+    gaze_options = [
+        "She is looking away from the camera toward something in the environment.",
+        "Her gaze is slightly downward, as if noticing something nearby.",
+        "She is looking off to the side, not directly into the lens.",
+        "She is focused on the activity she is doing rather than acknowledging the photographer.",
+        "She briefly glances toward the camera with a relaxed, unposed expression.",
+        "Her face is shown in a natural side or three-quarter view, not a straight-on portrait.",
+    ]
+
+    composition = random.choice(composition_options)
+    pose = random.choice(pose_options)
+    gaze = random.choice(gaze_options)
+
     object_guidance = ""
     if scene["id"] == "train_station":
         object_guidance = """
@@ -264,6 +294,17 @@ Natural daylight or realistic ambient light, ordinary smartphone perspective,
 natural exposure, realistic colors, slight natural photographic softness,
 realistic skin texture, subtle pores and small natural imperfections.
 Use a believable candid composition rather than a centered studio portrait.
+
+COMPOSITION VARIATION:
+{composition}
+
+BODY LANGUAGE:
+{pose}
+Adapt this naturally to the selected scene and its action; do not create contradictory actions.
+
+GAZE AND EXPRESSION:
+{gaze}
+Direct eye contact with the camera should be occasional, not the default.
 
 {object_guidance}
 
