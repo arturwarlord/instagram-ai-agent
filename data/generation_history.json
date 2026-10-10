@@ -45,5 +45,35 @@
     "pose": "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
     "gaze": "She is looking away from the camera toward something in the environment.",
     "generated_at": "2026-10-10T12:23:36.775887+00:00"
+  },
+  {
+    "scene_id": "old_town",
+    "scene": "a charming old-town street in Europe",
+    "action": "walking past small shops and glancing to the side",
+    "outfit": "a simple cream knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Photograph her from a slight side angle in a relaxed three-quarter view, not straight-on.",
+    "pose": "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
+    "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
+    "generated_at": "2026-10-10T12:25:46.046964+00:00"
+  },
+  {
+    "scene_id": "rainy_street",
+    "scene": "a European street after light rain",
+    "action": "walking with a closed umbrella and coffee",
+    "outfit": "a dark oversized knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Use a casual candid composition with slightly imperfect framing, as if a friend took the photo spontaneously.",
+    "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
+    "gaze": "She briefly glances toward the camera with a relaxed, unposed expression.",
+    "generated_at": "2026-10-10T12:25:49.911210+00:00"
+  },
+  {
+    "scene_id": "city_walk",
+    "scene": "a calm European city street",
+    "action": "walking naturally with a takeaway coffee in one hand",
+    "outfit": "a simple neutral cardigan, straight jeans and minimal silver jewelry",
+    "composition": "Use a wider environmental composition showing more of the street or interior, with Alicia not filling the whole frame.",
+    "pose": "She is caught in a natural in-between moment, casually adjusting her sleeve or jacket.",
+    "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
+    "generated_at": "2026-10-10T12:25:53.163175+00:00"
   }
 ]
