@@ -16,7 +16,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 REFERENCE_IMAGE = Path("character/reference/alicia.jpg")
 HISTORY_FILE = Path("data/generation_history.json")
 
-MODEL = "@cf/black-forest-labs/flux-2-klein-4b"
+MODEL = "@cf/black-forest-labs/flux-2-klein-9b"
 API_URL_TEMPLATE = "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/" + MODEL
 
 
