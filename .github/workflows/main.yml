@@ -2,9 +2,15 @@ name: Instagram AI Agent
 
 on:
   workflow_dispatch:
+  schedule:
+    # Generate one new photo every day at 15:00 UTC.
+    - cron: "0 15 * * *"
   push:
     branches:
       - main
+
+permissions:
+  contents: write
 
 jobs:
   generate:
@@ -13,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -28,29 +36,26 @@ jobs:
         env:
           Workers_AI: ${{ secrets.Workers_AI }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
-          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
         run: python main.py
 
       - name: Upload generated image
         uses: actions/upload-artifact@v4
         with:
           name: alicia-generated-image
-          path: |
-            content/generated/alicia_test.png
+          path: content/generated/alicia_test.png
           if-no-files-found: error
 
-      - name: Save generation history
+      - name: Save generated image and history
         run: |
-          if git diff --quiet -- data/generation_history.json; then
-            echo "ℹ️ No history changes to commit"
-            exit 0
-          fi
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add data/generation_history.json content/generated/alicia_test.png
-          git commit -m "chore: save generated post [skip ci]"
-          git push
 
+          if git diff --cached --quiet; then
+            echo "ℹ️ No changes to save"
+            exit 0
+          fi
+
+          git commit -m "chore: save generated Alicia photo [skip ci]"
+          git push
