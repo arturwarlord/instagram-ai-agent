@@ -1,4 +1,5 @@
 import base64
+import io
 import json
 import os
 import random
@@ -6,6 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
+from PIL import Image
 
 
 OUTPUT_DIR = Path("content/generated")
@@ -14,8 +16,8 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 REFERENCE_IMAGE = Path("character/reference/alicia.jpg")
 HISTORY_FILE = Path("data/generation_history.json")
 
-API_URL = "https://gen.pollinations.ai/v1/images/edits"
-MODEL = "black-forest-labs/flux.1-kontext-pro"
+MODEL = "@cf/black-forest-labs/flux-2-klein-4b"
+API_URL_TEMPLATE = "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/" + MODEL
 
 
 SCENES = [
@@ -177,47 +179,29 @@ def _choose_scene():
 
 def _extract_image(response):
     content_type = response.headers.get("content-type", "").lower()
-
     if content_type.startswith("image/"):
         return response.content
-
     try:
         data = response.json()
     except ValueError as error:
-        raise RuntimeError(
-            f"❌ Pollinations returned an unexpected response: "
-            f"{response.text[:1000]}"
-        ) from error
-
-    items = data.get("data") or []
-    if not items:
-        raise RuntimeError(
-            f"❌ Pollinations returned no image: {json.dumps(data)[:1500]}"
-        )
-
-    item = items[0]
-
-    b64 = item.get("b64_json")
-    if b64:
-        return base64.b64decode(b64)
-
-    image_url = item.get("url")
-    if image_url:
-        image_response = requests.get(image_url, timeout=180)
-        image_response.raise_for_status()
-        return image_response.content
-
-    raise RuntimeError(
-        f"❌ Pollinations response does not contain an image: "
-        f"{json.dumps(item)[:1500]}"
-    )
+        raise RuntimeError(f"❌ Cloudflare returned an unexpected response: {response.text[:1000]}") from error
+    result = data.get("result") or {}
+    image_data = result.get("image") or result.get("data")
+    if isinstance(image_data, str) and image_data:
+        try:
+            return base64.b64decode(image_data)
+        except Exception as error:
+            raise RuntimeError("❌ Could not decode the image returned by Cloudflare") from error
+    raise RuntimeError(f"❌ Cloudflare returned no image: {json.dumps(data)[:1500]}")
 
 
 def generate_image():
-    api_key = os.getenv("POLLINATIONS_API_KEY")
-
+    api_key = os.getenv("Workers_AI") or os.getenv("CLOUDFLARE_API_TOKEN")
+    account_id = os.getenv("CLOUDFLARE_ACCOUNT_ID")
     if not api_key:
-        raise RuntimeError("❌ POLLINATIONS_API_KEY is not configured")
+        raise RuntimeError("❌ GitHub Secret Workers_AI is not configured")
+    if not account_id:
+        raise RuntimeError("❌ CLOUDFLARE_ACCOUNT_ID is not configured")
 
     if not REFERENCE_IMAGE.exists():
         raise RuntimeError(
@@ -298,43 +282,35 @@ Vertical 4:5 composition suitable for an Instagram feed.
     print(f"👗 Outfit: {clothing}")
 
     try:
-        with REFERENCE_IMAGE.open("rb") as image_file:
-            files = {
-                "image": (
-                    REFERENCE_IMAGE.name,
-                    image_file,
-                    "image/jpeg",
-                )
-            }
-
+        # Reference images must be smaller than 512x512 for this model.
+        with Image.open(REFERENCE_IMAGE) as source:
+            reference = source.convert("RGB")
+            reference.thumbnail((512, 512))
+            buffer = io.BytesIO()
+            reference.save(buffer, format="JPEG", quality=90)
+            buffer.seek(0)
             response = requests.post(
-                API_URL,
-                headers={
-                    "Authorization": f"Bearer {api_key}",
-                },
-                data={
-                    "model": MODEL,
-                    "prompt": " ".join(prompt.split()),
-                    "size": "1024x1280",
-                    "response_format": "b64_json",
-                },
-                files=files,
+                API_URL_TEMPLATE.format(account_id=account_id),
+                headers={"Authorization": f"Bearer {api_key}"},
+                data={"prompt": " ".join(prompt.split()), "width": "1024", "height": "1280"},
+                files={"input_image_0": ("alicia_reference.jpg", buffer, "image/jpeg")},
                 timeout=300,
             )
-
         if response.status_code != 200:
             raise RuntimeError(
-                f"❌ Pollinations error {response.status_code}: "
+                f"❌ Cloudflare Workers AI error {response.status_code}: "
                 f"{response.text[:1500]}"
             )
-
         image_bytes = _extract_image(response)
-
         if not image_bytes:
-            raise RuntimeError("❌ Pollinations returned an empty image")
-
-        output_file = OUTPUT_DIR / "alicia_test.jpg"
-        output_file.write_bytes(image_bytes)
+            raise RuntimeError("❌ Cloudflare returned an empty image")
+        try:
+            with Image.open(io.BytesIO(image_bytes)) as generated:
+                generated.load()
+                output_file = OUTPUT_DIR / "alicia_test.png"
+                generated.convert("RGB").save(output_file, format="PNG")
+        except Exception as error:
+            raise RuntimeError("❌ Cloudflare response was not a valid image") from error
 
         history = _load_history()
         generated_at = datetime.now(timezone.utc).isoformat()
