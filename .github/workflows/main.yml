@@ -26,7 +26,8 @@ jobs:
 
       - name: Run AI Agent
         env:
-          POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
+          Workers_AI: ${{ secrets.Workers_AI }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
         run: python main.py
@@ -36,13 +37,12 @@ jobs:
         with:
           name: alicia-generated-image
           path: |
-            content/generated/alicia_test.jpg
-            content/posts/alicia_test.json
+            content/generated/alicia_test.png
           if-no-files-found: error
 
       - name: Save generation history
         run: |
-          if git diff --quiet -- data/generation_history.json data/caption_history.json content/posts/alicia_test.json; then
+          if git diff --quiet -- data/generation_history.json; then
             echo "ℹ️ No history changes to commit"
             exit 0
           fi
@@ -50,57 +50,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/generation_history.json data/caption_history.json content/posts/alicia_test.json content/generated/alicia_test.jpg
+          git add data/generation_history.json content/generated/alicia_test.png
           git commit -m "chore: save generated post [skip ci]"
           git push
 
-      - name: Publish to Instagram
-        env:
-          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
-          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
-        run: |
-          if [ -z "$INSTAGRAM_ACCESS_TOKEN" ] || [ -z "$INSTAGRAM_USER_ID" ]; then
-            echo "ℹ️ Instagram credentials are not configured. Publishing skipped."
-            exit 0
-          fi
-          IMAGE_COMMIT=$(git rev-parse HEAD)
-          export INSTAGRAM_IMAGE_URL="https://raw.githubusercontent.com/arturwarlord/instagram-ai-agent/$IMAGE_COMMIT/content/generated/alicia_test.jpg"
-
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          from instagram.publisher import publish_post
-
-          post = json.loads(
-              Path("content/posts/alicia_test.json").read_text(encoding="utf-8")
-          )
-
-          media_id = publish_post(post)
-
-          if media_id:
-              post["instagram_media_id"] = media_id
-              Path("content/posts/alicia_test.json").write_text(
-                  json.dumps(post, ensure_ascii=False, indent=2),
-                  encoding="utf-8",
-              )
-
-              import subprocess
-
-              subprocess.run(
-                  ["git", "config", "user.name", "github-actions[bot]"],
-                  check=True,
-              )
-              subprocess.run(
-                  ["git", "config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"],
-                  check=True,
-              )
-              subprocess.run(
-                  ["git", "add", "content/posts/alicia_test.json"],
-                  check=True,
-              )
-              subprocess.run(
-                  ["git", "commit", "-m", "chore: save Instagram publication ID [skip ci]"],
-                  check=True,
-              )
-              subprocess.run(["git", "push"], check=True)
-          PY
