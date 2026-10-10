@@ -5,5 +5,15 @@
     "action": "pausing for a moment and looking toward the city",
     "outfit": "a casual dark jacket over a plain top, relaxed jeans and minimal silver jewelry",
     "generated_at": "2026-10-10T12:05:31.531987+00:00"
+  },
+  {
+    "scene_id": "coffee_to_go",
+    "scene": "a lively pedestrian street",
+    "action": "walking out of a cafe with coffee and adjusting her jacket",
+    "outfit": "a simple cream knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Place Alicia off-center in the right third of the frame, leaving natural breathing room on the other side.",
+    "pose": "She is caught in a natural in-between moment, casually adjusting her sleeve or jacket.",
+    "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
+    "generated_at": "2026-10-10T12:11:12.983960+00:00"
   }
 ]
