@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "scene_id": "park_walk",
+    "scene": "a leafy European city park",
+    "action": "walking along a path while holding a takeaway drink",
+    "outfit": "a simple neutral cardigan, straight jeans and minimal silver jewelry",
+    "composition": "Use a wider environmental composition showing more of the street or interior, with Alicia not filling the whole frame.",
+    "pose": "When appropriate for the scene, she sits or stands at an angle rather than squarely facing the camera.",
+    "gaze": "She is looking off to the side, not directly into the lens.",
+    "generated_at": "2026-10-11T19:19:26.994156+00:00"
+  }
+]
