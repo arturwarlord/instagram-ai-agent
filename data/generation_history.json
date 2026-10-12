@@ -8,5 +8,15 @@
     "pose": "When appropriate for the scene, she sits or stands at an angle rather than squarely facing the camera.",
     "gaze": "She is looking off to the side, not directly into the lens.",
     "generated_at": "2026-10-11T19:19:26.994156+00:00"
+  },
+  {
+    "scene_id": "rainy_street",
+    "scene": "a European street after light rain",
+    "action": "walking with a closed umbrella and coffee",
+    "outfit": "a simple cream knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Place Alicia off-center in the right third of the frame, leaving natural breathing room on the other side.",
+    "pose": "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
+    "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
+    "generated_at": "2026-10-12T09:05:46.737128+00:00"
   }
 ]
