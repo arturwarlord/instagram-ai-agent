@@ -18,5 +18,15 @@
     "pose": "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
     "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
     "generated_at": "2026-10-12T09:05:46.737128+00:00"
+  },
+  {
+    "scene_id": "record_store",
+    "scene": "a small independent record store",
+    "action": "looking through vinyl records with a relaxed expression",
+    "outfit": "a dark oversized knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Frame her from a little farther away, showing her natural posture and more of the surrounding environment.",
+    "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
+    "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
+    "generated_at": "2026-10-12T22:23:00.920880+00:00"
   }
 ]
