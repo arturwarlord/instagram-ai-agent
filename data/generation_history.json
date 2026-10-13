@@ -28,5 +28,15 @@
     "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
     "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
     "generated_at": "2026-10-12T22:23:00.920880+00:00"
+  },
+  {
+    "scene_id": "cinema",
+    "scene": "outside a small independent cinema",
+    "action": "walking away from the entrance while holding a cinema ticket",
+    "outfit": "a casual dark jacket over a plain top, relaxed jeans and minimal silver jewelry",
+    "composition": "Use a casual candid composition with slightly imperfect framing, as if a friend took the photo spontaneously.",
+    "pose": "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
+    "gaze": "She is looking away from the camera toward something in the environment.",
+    "generated_at": "2026-10-13T20:30:24.643394+00:00"
   }
 ]
