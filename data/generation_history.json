@@ -58,5 +58,15 @@
     "pose": "When appropriate for the scene, she sits or stands at an angle rather than squarely facing the camera.",
     "gaze": "Her face is shown in a natural side or three-quarter view, not a straight-on portrait.",
     "generated_at": "2026-10-15T18:52:15.358814+00:00"
+  },
+  {
+    "scene_id": "bridge",
+    "scene": "a pedestrian bridge over a city river",
+    "action": "pausing for a moment and looking toward the city",
+    "outfit": "a dark oversized knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Use a wider environmental composition showing more of the street or interior, with Alicia not filling the whole frame.",
+    "pose": "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
+    "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
+    "generated_at": "2026-10-16T18:36:15.056465+00:00"
   }
 ]
