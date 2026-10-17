@@ -68,5 +68,15 @@
     "pose": "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
     "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
     "generated_at": "2026-10-16T18:36:15.056465+00:00"
+  },
+  {
+    "scene_id": "hotel_lobby",
+    "scene": "a simple stylish hotel lobby",
+    "action": "sitting in an armchair and checking her phone",
+    "outfit": "a casual dark jacket over a plain top, relaxed jeans and minimal silver jewelry",
+    "composition": "Frame her from a little farther away, showing her natural posture and more of the surrounding environment.",
+    "pose": "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
+    "gaze": "She is looking off to the side, not directly into the lens.",
+    "generated_at": "2026-10-17T17:45:02.128195+00:00"
   }
 ]
