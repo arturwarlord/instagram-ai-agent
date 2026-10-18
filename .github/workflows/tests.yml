@@ -12,6 +12,7 @@ on:
       - ".github/workflows/generate-caption.yml"
       - ".github/workflows/prepare-post.yml"
       - ".github/workflows/content-report.yml"
+      - ".github/workflows/instagram-connection-check.yml"
   workflow_dispatch:
 
 permissions:
