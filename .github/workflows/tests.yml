@@ -11,6 +11,7 @@ on:
       - ".github/workflows/select-photo.yml"
       - ".github/workflows/generate-caption.yml"
       - ".github/workflows/prepare-post.yml"
+      - ".github/workflows/content-report.yml"
   workflow_dispatch:
 
 permissions:
