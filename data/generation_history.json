@@ -98,5 +98,15 @@
     "pose": "She is caught in a natural in-between moment, casually adjusting her sleeve or jacket.",
     "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
     "generated_at": "2026-10-18T14:11:37.099735+00:00"
+  },
+  {
+    "scene_id": "seaside",
+    "scene": "a quiet European seaside promenade",
+    "action": "walking near the water with her hair moving naturally in the breeze",
+    "outfit": "a dark oversized knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Use a casual candid composition with slightly imperfect framing, as if a friend took the photo spontaneously.",
+    "pose": "When appropriate for the scene, she sits or stands at an angle rather than squarely facing the camera.",
+    "gaze": "She briefly glances toward the camera with a relaxed, unposed expression.",
+    "generated_at": "2026-10-18T14:17:24.203517+00:00"
   }
 ]
