@@ -77,7 +77,7 @@ def generate_caption(filename, selected_dir=SELECTED_DIR, captions_dir=CAPTIONS_
     if destination.exists():
         raise FileExistsError("Caption already exists: " + str(destination) + ". Remove it manually to regenerate.")
     record = {"image":filename,"caption":caption,"hashtags":hashtags,"generated_at_utc":datetime.now(timezone.utc).isoformat(),"status":"draft_not_published"}
-    destination.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    destination.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return destination, record
 
 def main():
