@@ -28,14 +28,14 @@ def _extract_text(response):
     return text.strip()
 
 def _parse_caption(text):
-    text = re.sub(r"^```(?:json)?\\s*|\\s*```$", "", text.strip(), flags=re.IGNORECASE)
+    text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text.strip(), flags=re.IGNORECASE)
     try:
         data = json.loads(text)
         caption = str(data.get("caption", "")).strip()
         hashtags = data.get("hashtags", [])
     except (json.JSONDecodeError, AttributeError):
         caption, hashtags = text, []
-    caption = re.sub(r"\\n?\\s*#\\w+", "", caption).strip()
+    caption = re.sub(r"\n?\s*#\w+", "", caption).strip()
     if not caption:
         raise RuntimeError("The AI returned an empty caption.")
     if not isinstance(hashtags, list):
