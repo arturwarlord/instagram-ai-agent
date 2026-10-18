@@ -236,11 +236,25 @@ def _validate_image_bytes(image_bytes):
 
 def _is_duplicate_image(image_bytes, output_dir=OUTPUT_DIR):
     """Check exact byte duplicates among previously generated PNGs."""
-    digest = __import__("hashlib").sha256(image_bytes).digest()
+    import hashlib
+
+    try:
+        with Image.open(io.BytesIO(image_bytes)) as image:
+            image = image.convert("RGB")
+            digest = hashlib.sha256(
+                f"{image.width}x{image.height}".encode() + image.tobytes()
+            ).digest()
+    except Exception:
+        return False
+
     for existing_file in output_dir.glob("*.png"):
         try:
-            existing_digest = __import__("hashlib").sha256(existing_file.read_bytes()).digest()
-        except OSError:
+            with Image.open(existing_file) as image:
+                image = image.convert("RGB")
+                existing_digest = hashlib.sha256(
+                    f"{image.width}x{image.height}".encode() + image.tobytes()
+                ).digest()
+        except (OSError, ValueError):
             continue
         if existing_digest == digest:
             return True
