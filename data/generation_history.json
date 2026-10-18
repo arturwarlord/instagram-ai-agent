@@ -108,5 +108,15 @@
     "pose": "When appropriate for the scene, she sits or stands at an angle rather than squarely facing the camera.",
     "gaze": "She briefly glances toward the camera with a relaxed, unposed expression.",
     "generated_at": "2026-10-18T14:17:24.203517+00:00"
+  },
+  {
+    "scene_id": "city_walk",
+    "scene": "a calm European city street",
+    "action": "walking naturally with a takeaway coffee in one hand",
+    "outfit": "a casual dark jacket over a plain top, relaxed jeans and minimal silver jewelry",
+    "composition": "Place Alicia off-center in the left third of the frame, with the real location visible around her.",
+    "pose": "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
+    "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
+    "generated_at": "2026-10-18T14:26:01.186784+00:00"
   }
 ]
