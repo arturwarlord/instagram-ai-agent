@@ -78,5 +78,15 @@
     "pose": "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
     "gaze": "She is looking off to the side, not directly into the lens.",
     "generated_at": "2026-10-17T17:45:02.128195+00:00"
+  },
+  {
+    "scene_id": "street_bakery",
+    "scene": "a small neighborhood bakery",
+    "action": "standing outside with a paper bag of pastries",
+    "outfit": "a simple neutral cardigan, straight jeans and minimal silver jewelry",
+    "composition": "Place Alicia off-center in the right third of the frame, leaving natural breathing room on the other side.",
+    "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
+    "gaze": "She is looking away from the camera toward something in the environment.",
+    "generated_at": "2026-10-18T14:10:02.317653+00:00"
   }
 ]
