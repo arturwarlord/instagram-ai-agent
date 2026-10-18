@@ -446,6 +446,16 @@ GAZE AND EXPRESSION:
 {gaze}
 Direct eye contact with the camera should be occasional, not the default.
 
+HANDS AND EVERYDAY OBJECTS:
+Hands must have realistic human anatomy, five natural-looking fingers when visible,
+correct joints and believable contact with objects. No fused, extra, missing or
+twisted fingers. Objects must be held with a physically plausible grip and scale.
+Only include props required by the selected scene and action; do not invent extra
+bags, duplicate items, floating objects, tangled straps or accessories.
+Any bag, cup, phone, book, umbrella or other prop must have realistic perspective,
+contact shadows, materials and lighting consistent with the same candid photograph.
+Keep props simple and unobtrusive; the person and the everyday moment remain the focus.
+
 {object_guidance}
 
 FACE AND SKIN:
@@ -474,6 +484,9 @@ Vertical 4:5 composition suitable for an Instagram feed.
     print(f"🧬 Identity reference: {REFERENCE_IMAGE}")
     print(f"📍 Scene: {scene['id']} — {scene['location']}")
     print(f"👗 Outfit: {clothing}")
+    print(f"📐 Composition: {composition}")
+    print(f"🧍 Pose: {pose}")
+    print(f"👀 Gaze: {gaze}")
 
     try:
         # Reference images must be smaller than 512x512 for this model.
