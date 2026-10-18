@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 from ai.image_generator import _is_duplicate_image, _validate_image_bytes
 
@@ -35,6 +35,32 @@ class GeneratedImageValidationTests(unittest.TestCase):
             folder = Path(directory)
             (folder / "previous.png").write_bytes(make_png())
             self.assertTrue(_is_duplicate_image(make_png(), folder))
+
+
+    def test_detects_near_identical_image_with_small_visual_change(self):
+        with tempfile.TemporaryDirectory() as directory:
+            folder = Path(directory)
+            original = Image.new("RGB", (640, 800), (120, 150, 180))
+            draw = ImageDraw.Draw(original)
+            draw.rectangle((100, 100, 500, 700), fill=(170, 190, 210))
+            original.save(folder / "previous.png", format="PNG")
+
+            slightly_changed = original.copy()
+            ImageDraw.Draw(slightly_changed).rectangle(
+                (101, 100, 500, 700), fill=(170, 190, 210)
+            )
+            buffer = io.BytesIO()
+            slightly_changed.save(buffer, format="PNG")
+
+            self.assertTrue(_is_duplicate_image(buffer.getvalue(), folder))
+
+    def test_allows_visually_different_images(self):
+        with tempfile.TemporaryDirectory() as directory:
+            folder = Path(directory)
+            Image.new("RGB", (640, 800), (20, 30, 220)).save(
+                folder / "previous.png", format="PNG"
+            )
+            self.assertFalse(_is_duplicate_image(make_png(color=(220, 30, 20)), folder))
 
     def test_allows_different_image(self):
         with tempfile.TemporaryDirectory() as directory:
