@@ -234,15 +234,37 @@ def _validate_image_bytes(image_bytes):
     return width, height
 
 
-def _is_duplicate_image(image_bytes, output_dir=OUTPUT_DIR):
-    """Check exact byte duplicates among previously generated PNGs."""
+def _normalized_thumbnail(image):
+    """Create a small RGB thumbnail for inexpensive visual-similarity checks."""
+    return image.convert("RGB").resize((32, 40), Image.Resampling.LANCZOS)
+
+
+def _mean_pixel_difference(image_a, image_b):
+    """Return normalized mean absolute RGB difference, from 0 to 255."""
+    from PIL import ImageChops, ImageStat
+
+    thumb_a = _normalized_thumbnail(image_a)
+    thumb_b = _normalized_thumbnail(image_b)
+    difference = ImageChops.difference(thumb_a, thumb_b)
+    return sum(ImageStat.Stat(difference).mean) / 3
+
+
+def _is_duplicate_image(image_bytes, output_dir=OUTPUT_DIR, similarity_threshold=10.0):
+    """
+    Reject exact duplicates and near-identical images.
+
+    Similarity uses a normalized thumbnail comparison. A mean RGB difference
+    at or below the threshold is treated as too similar. This is a lightweight
+    visual check, not face recognition or semantic scene understanding.
+    """
     import hashlib
 
     try:
         with Image.open(io.BytesIO(image_bytes)) as image:
-            image = image.convert("RGB")
+            image.load()
+            candidate = image.convert("RGB")
             digest = hashlib.sha256(
-                f"{image.width}x{image.height}".encode() + image.tobytes()
+                f"{candidate.width}x{candidate.height}".encode() + candidate.tobytes()
             ).digest()
     except Exception:
         return False
@@ -250,14 +272,19 @@ def _is_duplicate_image(image_bytes, output_dir=OUTPUT_DIR):
     for existing_file in output_dir.glob("*.png"):
         try:
             with Image.open(existing_file) as image:
-                image = image.convert("RGB")
+                image.load()
+                existing = image.convert("RGB")
                 existing_digest = hashlib.sha256(
-                    f"{image.width}x{image.height}".encode() + image.tobytes()
+                    f"{existing.width}x{existing.height}".encode() + existing.tobytes()
                 ).digest()
+                if existing_digest == digest:
+                    print(f"⚠️ Exact duplicate detected: {existing_file.name}")
+                    return True
+                if _mean_pixel_difference(candidate, existing) <= similarity_threshold:
+                    print(f"⚠️ Visually near-identical image detected: {existing_file.name}")
+                    return True
         except (OSError, ValueError):
             continue
-        if existing_digest == digest:
-            return True
     return False
 
 
@@ -424,7 +451,7 @@ Vertical 4:5 composition suitable for an Instagram feed.
         image_bytes = _extract_image(response)
         width, height = _validate_image_bytes(image_bytes)
         if _is_duplicate_image(image_bytes):
-            raise RuntimeError("❌ Generated image is an exact duplicate of a previously saved PNG; it was not saved")
+            raise RuntimeError("❌ Generated image duplicates or closely resembles a previously saved PNG; it was not saved")
 
         with Image.open(io.BytesIO(image_bytes)) as generated:
             filename_timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S_%f")
