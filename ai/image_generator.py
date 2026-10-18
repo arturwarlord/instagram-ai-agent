@@ -193,6 +193,53 @@ def _choose_varied_option(options, history_key, recent_count=4):
     return random.choice(available)
 
 
+def _choose_visual_variation(composition_options, pose_options, gaze_options, recent_count=8):
+    """Choose a varied framing/pose/gaze combination, avoiding recent exact repeats."""
+    history = _load_history()
+    recent = history[-recent_count:]
+    recent_combinations = {
+        (item.get("composition"), item.get("pose"), item.get("gaze"))
+        for item in recent
+        if item.get("composition") and item.get("pose") and item.get("gaze")
+    }
+
+    combinations = [
+        (composition, pose, gaze)
+        for composition in composition_options
+        for pose in pose_options
+        for gaze in gaze_options
+    ]
+    unseen_combinations = [
+        combination for combination in combinations
+        if combination not in recent_combinations
+    ]
+    if unseen_combinations:
+        combinations = unseen_combinations
+
+    recent_individual = history[-4:]
+    recent_compositions = {
+        item.get("composition") for item in recent_individual if item.get("composition")
+    }
+    recent_poses = {
+        item.get("pose") for item in recent_individual if item.get("pose")
+    }
+    recent_gazes = {
+        item.get("gaze") for item in recent_individual if item.get("gaze")
+    }
+
+    fresh_combinations = [
+        (composition, pose, gaze)
+        for composition, pose, gaze in combinations
+        if composition not in recent_compositions
+        and pose not in recent_poses
+        and gaze not in recent_gazes
+    ]
+    if fresh_combinations:
+        combinations = fresh_combinations
+
+    return random.choice(combinations)
+
+
 def _extract_image(response):
     content_type = response.headers.get("content-type", "").lower()
     if content_type.startswith("image/"):
@@ -338,9 +385,9 @@ def generate_image():
         "Her face is shown in a natural side or three-quarter view, not a straight-on portrait.",
     ]
 
-    composition = _choose_varied_option(composition_options, "composition", recent_count=4)
-    pose = _choose_varied_option(pose_options, "pose", recent_count=4)
-    gaze = _choose_varied_option(gaze_options, "gaze", recent_count=4)
+    composition, pose, gaze = _choose_visual_variation(
+        composition_options, pose_options, gaze_options, recent_count=8
+    )
 
     object_guidance = ""
     if scene["id"] == "train_station":
