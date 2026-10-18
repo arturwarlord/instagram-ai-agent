@@ -10,6 +10,7 @@ on:
       - ".github/workflows/tests.yml"
       - ".github/workflows/select-photo.yml"
       - ".github/workflows/generate-caption.yml"
+      - ".github/workflows/prepare-post.yml"
   workflow_dispatch:
 
 permissions:
