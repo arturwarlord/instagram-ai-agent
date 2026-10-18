@@ -118,5 +118,15 @@
     "pose": "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
     "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
     "generated_at": "2026-10-18T14:26:01.186784+00:00"
+  },
+  {
+    "scene_id": "tram_stop",
+    "scene": "a European tram stop",
+    "action": "waiting for a tram and casually checking her phone",
+    "outfit": "a simple neutral cardigan, straight jeans and minimal silver jewelry",
+    "composition": "Use a wider environmental composition showing more of the street or interior, with Alicia not filling the whole frame.",
+    "pose": "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
+    "gaze": "She is looking off to the side, not directly into the lens.",
+    "generated_at": "2026-10-18T17:48:16.770660+00:00"
   }
 ]
