@@ -1,11 +1,17 @@
 import io
+import json
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-from ai.image_generator import _is_duplicate_image, _validate_image_bytes
+from ai.image_generator import (
+    _choose_visual_variation,
+    _is_duplicate_image,
+    _validate_image_bytes,
+)
 
 
 def make_png(width=640, height=800, color=(30, 120, 200)):
@@ -61,6 +67,28 @@ class GeneratedImageValidationTests(unittest.TestCase):
                 folder / "previous.png", format="PNG"
             )
             self.assertFalse(_is_duplicate_image(make_png(color=(220, 30, 20)), folder))
+
+    def test_avoids_recent_visual_combination_and_individual_choices(self):
+        with tempfile.TemporaryDirectory() as directory:
+            history_file = Path(directory) / "history.json"
+            previous = {
+                "composition": "composition A",
+                "pose": "pose A",
+                "gaze": "gaze A",
+            }
+            history_file.write_text(json.dumps([previous]), encoding="utf-8")
+
+            with patch("ai.image_generator.HISTORY_FILE", history_file):
+                selected = _choose_visual_variation(
+                    ["composition A", "composition B"],
+                    ["pose A", "pose B"],
+                    ["gaze A", "gaze B"],
+                )
+
+            self.assertEqual(
+                selected,
+                ("composition B", "pose B", "gaze B"),
+            )
 
     def test_allows_different_image(self):
         with tempfile.TemporaryDirectory() as directory:
