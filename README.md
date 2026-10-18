@@ -9,6 +9,7 @@ A GitHub Actions project that generates one realistic, varied Alicia photo per r
 - **Keep a favorite:** use **Actions → Select Alicia Photo → Run workflow**. Enter the exact PNG filename from `content/generated/` (filename only, no folder path). The workflow copies it to `content/selected/` and commits it.
 - **Avoid accidental overwrites:** selecting a filename already present in `content/selected/` fails safely instead of replacing the saved photo.
 - **Prepare a post queue entry:** use **Actions → Prepare Alicia Post Queue Entry → Run workflow**. Enter the selected PNG filename and a future UTC timestamp such as `2026-10-20T15:00:00Z`. This combines its caption and hashtags into `content/queue/` without publishing anything.
+- **Review the whole content inventory:** use **Actions → Alicia Content Status Report → Run workflow**. It updates `reports/content_status.md` with generated/selected photo counts, caption status, queue status, and planned UTC time. The workflow does not generate images or publish posts.
 
 ## Required GitHub Actions secrets
 
@@ -21,4 +22,5 @@ A GitHub Actions project that generates one realistic, varied Alicia photo per r
 - The generator uses `character/reference/alicia.jpg` as the identity reference. Do not replace it unless intentionally changing Alicia's appearance.
 - Generated photos and generation history are stored in the repository. The curated `content/selected/` folder is for manually chosen favorites.
 - Queue entries are planning records only: `publishing_enabled` is `false`; no timer or posting process runs from them.
+- The content report is read-only and flags unreadable JSON records instead of attempting to repair them.
 - Instagram login, automatic posting, and automatic replies are not enabled.
