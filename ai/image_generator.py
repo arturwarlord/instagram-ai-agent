@@ -285,7 +285,7 @@ adult woman from the reference image.
 IDENTITY PRIORITY:
 Preserve her recognizable identity from the reference:
 same face, same natural facial proportions, same eyes, same nose, same lips,
-same eyebrows, same skin tone, same short blonde bob haircut and the
+same eyebrows, same skin tone, same dark-brown medium-length hair and the
 same overall natural appearance.
 
 Do NOT redesign her face.
@@ -332,8 +332,8 @@ No beauty filter, no airbrushing, no plastic or porcelain skin,
 no excessive smoothing, no face enhancement.
 
 HAIR:
-Keep the same short blonde bob haircut identity from the reference.
-Short blonde bob around chin-to-jaw length, natural side part, softly textured ends and realistic individual strands. Everyday styling, slightly imperfect, not salon-perfect.
+Keep the same dark-brown medium-length hair identity from the reference.
+Natural everyday styling, slightly imperfect, not salon-perfect.
 
 IMPORTANT:
 Only change the scene, pose, clothing details and environment.
