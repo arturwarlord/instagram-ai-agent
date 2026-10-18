@@ -211,6 +211,42 @@ def _extract_image(response):
     raise RuntimeError(f"❌ Cloudflare returned no image: {json.dumps(data)[:1500]}")
 
 
+def _validate_image_bytes(image_bytes):
+    """Reject corrupt, empty, or unexpectedly tiny generated image files."""
+    if not image_bytes:
+        raise RuntimeError("❌ Cloudflare returned an empty image")
+
+    try:
+        with Image.open(io.BytesIO(image_bytes)) as image:
+            image.verify()
+        with Image.open(io.BytesIO(image_bytes)) as image:
+            width, height = image.size
+            if width < 512 or height < 512:
+                raise RuntimeError(
+                    f"❌ Generated image is too small: {width}x{height}; expected at least 512x512"
+                )
+            image.load()
+    except RuntimeError:
+        raise
+    except Exception as error:
+        raise RuntimeError("❌ Cloudflare response was not a valid image") from error
+
+    return width, height
+
+
+def _is_duplicate_image(image_bytes, output_dir=OUTPUT_DIR):
+    """Check exact byte duplicates among previously generated PNGs."""
+    digest = __import__("hashlib").sha256(image_bytes).digest()
+    for existing_file in output_dir.glob("*.png"):
+        try:
+            existing_digest = __import__("hashlib").sha256(existing_file.read_bytes()).digest()
+        except OSError:
+            continue
+        if existing_digest == digest:
+            return True
+    return False
+
+
 def generate_image():
     api_key = os.getenv("Workers_AI") or os.getenv("CLOUDFLARE_API_TOKEN")
     account_id = os.getenv("CLOUDFLARE_ACCOUNT_ID")
@@ -372,16 +408,15 @@ Vertical 4:5 composition suitable for an Instagram feed.
                 f"{response.text[:1500]}"
             )
         image_bytes = _extract_image(response)
-        if not image_bytes:
-            raise RuntimeError("❌ Cloudflare returned an empty image")
-        try:
-            with Image.open(io.BytesIO(image_bytes)) as generated:
-                generated.load()
-                filename_timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S_%f")
-                output_file = OUTPUT_DIR / f"alicia_{filename_timestamp}.png"
-                generated.convert("RGB").save(output_file, format="PNG")
-        except Exception as error:
-            raise RuntimeError("❌ Cloudflare response was not a valid image") from error
+        width, height = _validate_image_bytes(image_bytes)
+        if _is_duplicate_image(image_bytes):
+            raise RuntimeError("❌ Generated image is an exact duplicate of a previously saved PNG; it was not saved")
+
+        with Image.open(io.BytesIO(image_bytes)) as generated:
+            filename_timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S_%f")
+            output_file = OUTPUT_DIR / f"alicia_{filename_timestamp}.png"
+            generated.convert("RGB").save(output_file, format="PNG")
+        print(f"🖼️ Validated image dimensions: {width}x{height}")
 
         history = _load_history()
         generated_at = datetime.now(timezone.utc).isoformat()
