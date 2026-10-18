@@ -88,5 +88,15 @@
     "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
     "gaze": "She is looking away from the camera toward something in the environment.",
     "generated_at": "2026-10-18T14:10:02.317653+00:00"
+  },
+  {
+    "scene_id": "riverside",
+    "scene": "a riverside promenade in a European city",
+    "action": "standing near the water with her hands in her sweater pockets",
+    "outfit": "a simple cream knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Photograph her from a slight side angle in a relaxed three-quarter view, not straight-on.",
+    "pose": "She is caught in a natural in-between moment, casually adjusting her sleeve or jacket.",
+    "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
+    "generated_at": "2026-10-18T14:11:37.099735+00:00"
   }
 ]
