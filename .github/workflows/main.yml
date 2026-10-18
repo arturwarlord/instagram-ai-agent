@@ -32,18 +32,42 @@ jobs:
       - name: Run tests
         run: python -m unittest discover -s tests -v
 
+      - name: Record existing images
+        run: |
+          mkdir -p "$RUNNER_TEMP"
+          find content/generated -maxdepth 1 -type f -name '*.png' -printf '%p\n' | sort > "$RUNNER_TEMP/images-before.txt"
+
       - name: Run AI Agent
         env:
           Workers_AI: ${{ secrets.Workers_AI }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: python main.py
 
-      - name: Upload generated photos
+      - name: Find newly generated image
+        id: new_image
+        shell: bash
+        run: |
+          find content/generated -maxdepth 1 -type f -name '*.png' -printf '%p\n' | sort > "$RUNNER_TEMP/images-after.txt"
+          comm -13 "$RUNNER_TEMP/images-before.txt" "$RUNNER_TEMP/images-after.txt" > "$RUNNER_TEMP/new-images.txt"
+
+          count=$(wc -l < "$RUNNER_TEMP/new-images.txt" | tr -d ' ')
+          if [ "$count" -ne 1 ]; then
+            echo "Expected exactly one new PNG, found $count"
+            cat "$RUNNER_TEMP/new-images.txt"
+            exit 1
+          fi
+
+          image_path=$(cat "$RUNNER_TEMP/new-images.txt")
+          echo "image_path=$image_path" >> "$GITHUB_OUTPUT"
+          echo "New image detected: $image_path"
+
+      - name: Upload newly generated photo
         uses: actions/upload-artifact@v4
         with:
-          name: alicia-generated-photos
-          path: content/generated/*.png
+          name: alicia-generated-image
+          path: ${{ steps.new_image.outputs.image_path }}
           if-no-files-found: error
+          retention-days: 14
 
       - name: Save generated image and history
         run: |
