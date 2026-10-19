@@ -128,5 +128,15 @@
     "pose": "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
     "gaze": "She is looking off to the side, not directly into the lens.",
     "generated_at": "2026-10-18T17:48:16.770660+00:00"
+  },
+  {
+    "scene_id": "hotel_balcony",
+    "scene": "a modest European hotel balcony",
+    "action": "leaning casually on the railing with a morning coffee",
+    "outfit": "a simple cream knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Frame her from a little farther away, showing her natural posture and more of the surrounding environment.",
+    "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
+    "gaze": "She is looking away from the camera toward something in the environment.",
+    "generated_at": "2026-10-19T20:20:51.992986+00:00"
   }
 ]
