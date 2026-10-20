@@ -138,5 +138,15 @@
     "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
     "gaze": "She is looking away from the camera toward something in the environment.",
     "generated_at": "2026-10-19T20:20:51.992986+00:00"
+  },
+  {
+    "scene_id": "metro",
+    "scene": "a clean modern metro platform",
+    "action": "waiting for a train while holding her phone",
+    "outfit": "a dark oversized knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Place Alicia off-center in the right third of the frame, leaving natural breathing room on the other side.",
+    "pose": "She is caught in a natural in-between moment, casually adjusting her sleeve or jacket.",
+    "gaze": "Her face is shown in a natural side or three-quarter view, not a straight-on portrait.",
+    "generated_at": "2026-10-20T18:53:38.090982+00:00"
   }
 ]
