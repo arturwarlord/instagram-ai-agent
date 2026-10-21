@@ -148,5 +148,15 @@
     "pose": "She is caught in a natural in-between moment, casually adjusting her sleeve or jacket.",
     "gaze": "Her face is shown in a natural side or three-quarter view, not a straight-on portrait.",
     "generated_at": "2026-10-20T18:53:38.090982+00:00"
+  },
+  {
+    "scene_id": "museum",
+    "scene": "a bright contemporary art museum",
+    "action": "standing in front of an artwork and looking at it naturally",
+    "outfit": "a casual dark jacket over a plain top, relaxed jeans and minimal silver jewelry",
+    "composition": "Use a casual candid composition with slightly imperfect framing, as if a friend took the photo spontaneously.",
+    "pose": "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
+    "gaze": "She briefly glances toward the camera with a relaxed, unposed expression.",
+    "generated_at": "2026-10-21T19:06:33.392133+00:00"
   }
 ]
