@@ -158,5 +158,15 @@
     "pose": "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
     "gaze": "She briefly glances toward the camera with a relaxed, unposed expression.",
     "generated_at": "2026-10-21T19:06:33.392133+00:00"
+  },
+  {
+    "scene_id": "cafe_window",
+    "scene": "a small cozy cafe near a large window",
+    "action": "sitting by the window with a coffee and casually looking outside",
+    "outfit": "a simple neutral cardigan, straight jeans and minimal silver jewelry",
+    "composition": "Place Alicia off-center in the left third of the frame, with the real location visible around her.",
+    "pose": "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
+    "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
+    "generated_at": "2026-10-23T18:52:49.663947+00:00"
   }
 ]
