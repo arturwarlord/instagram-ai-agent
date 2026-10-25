@@ -168,5 +168,15 @@
     "pose": "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
     "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
     "generated_at": "2026-10-23T18:52:49.663947+00:00"
+  },
+  {
+    "scene_id": "train_station",
+    "scene": "a modern European train station",
+    "action": "waiting near the platform with exactly one simple everyday shoulder bag, carried naturally at her side",
+    "outfit": "a simple cream knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Use a wider environmental composition showing more of the street or interior, with Alicia not filling the whole frame.",
+    "pose": "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
+    "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
+    "generated_at": "2026-10-25T18:05:47.184097+00:00"
   }
 ]
