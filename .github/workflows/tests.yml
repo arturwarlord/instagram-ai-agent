@@ -13,6 +13,7 @@ on:
       - ".github/workflows/prepare-post.yml"
       - ".github/workflows/content-report.yml"
       - ".github/workflows/instagram-connection-check.yml"
+      - ".github/workflows/metricool-publish.yml"
   workflow_dispatch:
 
 permissions:
