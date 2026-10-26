@@ -23,7 +23,7 @@ class ContentReportTests(unittest.TestCase):
         )
         (self.queue / "alicia.json").write_text(
             '{"image":"alicia.png","status":"queued_not_published",'
-            '"scheduled_at_utc":"2026-10-20T15:00:00Z","publishing_enabled":false}',
+            '"scheduled_at_utc":"2026-10-28T15:00:00Z","publishing_enabled":false}',
             encoding="utf-8",
         )
 
@@ -39,7 +39,7 @@ class ContentReportTests(unittest.TestCase):
         self.assertIn("alicia.png", report)
         self.assertIn("draft_not_published", report)
         self.assertIn("queued_not_published", report)
-        self.assertIn("2026-10-20T15:00:00Z", report)
+        self.assertIn("2026-10-28T15:00:00Z", report)
 
     def test_missing_caption_and_queue_are_reported(self):
         (self.captions / "alicia.json").unlink()
@@ -59,8 +59,10 @@ class ContentReportTests(unittest.TestCase):
                 path.unlink()
         self.assertIn("No content files found yet", self.report())
 
-    def test_report_keeps_publishing_disabled(self):
-        self.assertIn("Publishing remains disabled", self.report())
+    def test_report_describes_read_only_boundary(self):
+        report = self.report()
+        self.assertIn("never performs Metricool or Instagram API operations", report)
+        self.assertIn("publishing_enabled: true", report)
 
 
 if __name__ == "__main__":
