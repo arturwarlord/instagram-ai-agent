@@ -8,9 +8,14 @@ on:
         required: true
         type: string
       scheduled_at_utc:
-        description: "Future UTC timestamp, for example 2026-10-20T15:00:00Z"
+        description: "Future UTC timestamp, for example 2026-10-28T15:00:00Z"
         required: true
         type: string
+      enable_auto_publishing:
+        description: "Enable Metricool auto-publication for this post"
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -29,15 +34,16 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Prepare unpublished queue entry
+      - name: Prepare post queue entry
         env:
-          SELECTED_FILENAME: \${{ inputs.filename }}
-          SCHEDULED_AT_UTC: \${{ inputs.scheduled_at_utc }}
-        run: python scripts/prepare_post.py "$SELECTED_FILENAME" "$SCHEDULED_AT_UTC"
+          SELECTED_FILENAME: ${{ inputs.filename }}
+          SCHEDULED_AT_UTC: ${{ inputs.scheduled_at_utc }}
+          ENABLE_AUTO_PUBLISHING: ${{ inputs.enable_auto_publishing }}
+        run: python scripts/prepare_post.py "$SELECTED_FILENAME" "$SCHEDULED_AT_UTC" "$ENABLE_AUTO_PUBLISHING"
       - name: Commit queue entry
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content/queue/
-          git commit -m "content: queue Alicia post draft"
+          git commit -m "content: queue Alicia post"
           git push
