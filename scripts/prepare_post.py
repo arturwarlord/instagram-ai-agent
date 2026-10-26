@@ -1,4 +1,4 @@
-"""Prepare a reviewed, unpublished Instagram post queue entry."""
+"""Prepare a reviewed Instagram post and optionally enable Metricool scheduling."""
 import json
 import sys
 from datetime import datetime, timezone
@@ -16,7 +16,7 @@ def _parse_utc(value, now=None):
             normalized = normalized[:-1] + "+00:00"
         parsed = datetime.fromisoformat(normalized)
     except (AttributeError, ValueError) as error:
-        raise ValueError("Use an ISO timestamp such as 2026-10-20T15:00:00Z.") from error
+        raise ValueError("Use an ISO timestamp such as 2026-10-28T15:00:00Z.") from error
     if parsed.tzinfo is None or parsed.utcoffset() is None:
         raise ValueError("The schedule must include a timezone, preferably Z for UTC.")
     if parsed.utcoffset().total_seconds() != 0:
@@ -28,12 +28,25 @@ def _parse_utc(value, now=None):
     return parsed
 
 
+def _parse_bool(value):
+    if isinstance(value, bool):
+        return value
+    normalized = str(value).strip().lower()
+    if normalized in {"true", "1", "yes", "y"}:
+        return True
+    if normalized in {"false", "0", "no", "n", ""}:
+        return False
+    raise ValueError("Automatic publishing option must be true or false.")
+
+
 def prepare_post(filename, scheduled_at, selected_dir=SELECTED_DIR,
-                 captions_dir=CAPTIONS_DIR, queue_dir=QUEUE_DIR, now=None):
+                 captions_dir=CAPTIONS_DIR, queue_dir=QUEUE_DIR, now=None,
+                 publishing_enabled=False):
     if not filename or Path(filename).name != filename or filename in {".", ".."}:
         raise ValueError("Provide only the image filename, not a path.")
     if not filename.lower().endswith(".png"):
         raise ValueError("Only PNG images can be queued.")
+    publishing_enabled = _parse_bool(publishing_enabled)
     image_path = selected_dir / filename
     if not image_path.is_file():
         raise FileNotFoundError("Selected photo not found: " + str(image_path))
@@ -44,6 +57,8 @@ def prepare_post(filename, scheduled_at, selected_dir=SELECTED_DIR,
         caption_record = json.loads(caption_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as error:
         raise ValueError("Caption draft is unreadable or invalid JSON.") from error
+    if not isinstance(caption_record, dict):
+        raise ValueError("Caption draft must contain a JSON object.")
     if caption_record.get("image") != filename:
         raise ValueError("Caption draft references a different image.")
     if caption_record.get("status") != "draft_not_published":
@@ -65,8 +80,8 @@ def prepare_post(filename, scheduled_at, selected_dir=SELECTED_DIR,
         "caption": caption.strip(),
         "hashtags": hashtags,
         "scheduled_at_utc": scheduled.isoformat().replace("+00:00", "Z"),
-        "status": "queued_not_published",
-        "publishing_enabled": False,
+        "status": "queued_for_metricool" if publishing_enabled else "queued_not_published",
+        "publishing_enabled": publishing_enabled,
         "created_at_utc": created.astimezone(timezone.utc).isoformat().replace("+00:00", "Z"),
     }
     destination.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -74,14 +89,22 @@ def prepare_post(filename, scheduled_at, selected_dir=SELECTED_DIR,
 
 
 def main():
-    if len(sys.argv) != 3:
-        raise SystemExit("Usage: python scripts/prepare_post.py <selected-image.png> <scheduled-at-UTC>")
+    if len(sys.argv) not in {3, 4}:
+        raise SystemExit(
+            "Usage: python scripts/prepare_post.py <selected-image.png> "
+            "<scheduled-at-UTC> [enable-metricool-publishing true|false]"
+        )
     try:
-        destination, record = prepare_post(sys.argv[1], sys.argv[2])
+        enabled = _parse_bool(sys.argv[3]) if len(sys.argv) == 4 else False
+        destination, record = prepare_post(sys.argv[1], sys.argv[2],
+                                           publishing_enabled=enabled)
     except (ValueError, FileNotFoundError, FileExistsError) as error:
         raise SystemExit("Queue preparation failed: " + str(error)) from error
     print("Queue entry saved: " + str(destination))
-    print("Status: queued draft only; nothing was published.")
+    if record["publishing_enabled"]:
+        print("Status: enabled for Metricool scheduling; it will be submitted by the Metricool sync workflow.")
+    else:
+        print("Status: draft only; no publishing is enabled.")
     print(json.dumps(record, ensure_ascii=False, indent=2))
 
 
