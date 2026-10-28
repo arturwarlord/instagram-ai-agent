@@ -178,5 +178,15 @@
     "pose": "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
     "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
     "generated_at": "2026-10-25T18:05:47.184097+00:00"
+  },
+  {
+    "scene_id": "market",
+    "scene": "a local European street market",
+    "action": "choosing fruit from a small market stall",
+    "outfit": "a dark oversized knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Frame her from a little farther away, showing her natural posture and more of the surrounding environment.",
+    "pose": "When appropriate for the scene, she sits or stands at an angle rather than squarely facing the camera.",
+    "gaze": "She is looking off to the side, not directly into the lens.",
+    "generated_at": "2026-10-28T20:03:45.819370+00:00"
   }
 ]
