@@ -188,5 +188,15 @@
     "pose": "When appropriate for the scene, she sits or stands at an angle rather than squarely facing the camera.",
     "gaze": "She is looking off to the side, not directly into the lens.",
     "generated_at": "2026-10-28T20:03:45.819370+00:00"
+  },
+  {
+    "scene_id": "old_town",
+    "scene": "a charming old-town street in Europe",
+    "action": "walking past small shops and glancing to the side",
+    "outfit": "a casual dark jacket over a plain top, relaxed jeans and minimal silver jewelry",
+    "composition": "Place Alicia off-center in the right third of the frame, leaving natural breathing room on the other side.",
+    "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
+    "gaze": "She is looking away from the camera toward something in the environment.",
+    "generated_at": "2026-10-29T20:03:12.211033+00:00"
   }
 ]
