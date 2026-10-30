@@ -198,5 +198,15 @@
     "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
     "gaze": "She is looking away from the camera toward something in the environment.",
     "generated_at": "2026-10-29T20:03:12.211033+00:00"
+  },
+  {
+    "scene_id": "bridge",
+    "scene": "a pedestrian bridge over a city river",
+    "action": "pausing for a moment and looking toward the city",
+    "outfit": "a simple neutral cardigan, straight jeans and minimal silver jewelry",
+    "composition": "Photograph her from a slight side angle in a relaxed three-quarter view, not straight-on.",
+    "pose": "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
+    "gaze": "Her face is shown in a natural side or three-quarter view, not a straight-on portrait.",
+    "generated_at": "2026-10-30T19:50:10.729876+00:00"
   }
 ]
