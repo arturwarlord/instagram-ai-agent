@@ -208,5 +208,15 @@
     "pose": "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
     "gaze": "Her face is shown in a natural side or three-quarter view, not a straight-on portrait.",
     "generated_at": "2026-10-30T19:50:10.729876+00:00"
+  },
+  {
+    "scene_id": "park_walk",
+    "scene": "a leafy European city park",
+    "action": "walking along a path while holding a takeaway drink",
+    "outfit": "a simple cream knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Use a casual candid composition with slightly imperfect framing, as if a friend took the photo spontaneously.",
+    "pose": "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
+    "gaze": "She briefly glances toward the camera with a relaxed, unposed expression.",
+    "generated_at": "2026-10-31T19:04:40.561512+00:00"
   }
 ]
