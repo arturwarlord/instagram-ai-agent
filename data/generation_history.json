@@ -228,5 +228,15 @@
     "pose": "She is caught in a natural in-between moment, casually adjusting her sleeve or jacket.",
     "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
     "generated_at": "2026-11-01T19:21:07.010153+00:00"
+  },
+  {
+    "scene_id": "record_store",
+    "scene": "a small independent record store",
+    "action": "looking through vinyl records with a relaxed expression",
+    "outfit": "a casual dark jacket over a plain top, relaxed jeans and minimal silver jewelry",
+    "composition": "Place Alicia off-center in the left third of the frame, with the real location visible around her.",
+    "pose": "When appropriate for the scene, she sits or stands at an angle rather than squarely facing the camera.",
+    "gaze": "She is looking off to the side, not directly into the lens.",
+    "generated_at": "2026-11-02T22:58:55.081760+00:00"
   }
 ]
