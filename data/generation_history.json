@@ -238,5 +238,15 @@
     "pose": "When appropriate for the scene, she sits or stands at an angle rather than squarely facing the camera.",
     "gaze": "She is looking off to the side, not directly into the lens.",
     "generated_at": "2026-11-02T22:58:55.081760+00:00"
+  },
+  {
+    "scene_id": "cinema",
+    "scene": "outside a small independent cinema",
+    "action": "walking away from the entrance while holding a cinema ticket",
+    "outfit": "a simple neutral cardigan, straight jeans and minimal silver jewelry",
+    "composition": "Frame her from a little farther away, showing her natural posture and more of the surrounding environment.",
+    "pose": "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
+    "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
+    "generated_at": "2026-11-03T20:45:38.164630+00:00"
   }
 ]
