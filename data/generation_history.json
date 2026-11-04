@@ -248,5 +248,15 @@
     "pose": "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
     "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
     "generated_at": "2026-11-03T20:45:38.164630+00:00"
+  },
+  {
+    "scene_id": "bookshop",
+    "scene": "a small independent bookshop",
+    "action": "browsing a shelf and holding an open book",
+    "outfit": "a simple cream knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Photograph her from a slight side angle in a relaxed three-quarter view, not straight-on.",
+    "pose": "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
+    "gaze": "She is looking away from the camera toward something in the environment.",
+    "generated_at": "2026-11-04T21:03:00.895330+00:00"
   }
 ]
