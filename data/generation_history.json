@@ -258,5 +258,15 @@
     "pose": "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
     "gaze": "She is looking away from the camera toward something in the environment.",
     "generated_at": "2026-11-04T21:03:00.895330+00:00"
+  },
+  {
+    "scene_id": "coffee_to_go",
+    "scene": "a lively pedestrian street",
+    "action": "walking out of a cafe with coffee and adjusting her jacket",
+    "outfit": "a dark oversized knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Place Alicia off-center in the right third of the frame, leaving natural breathing room on the other side.",
+    "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
+    "gaze": "She briefly glances toward the camera with a relaxed, unposed expression.",
+    "generated_at": "2026-11-05T21:19:43.640831+00:00"
   }
 ]
