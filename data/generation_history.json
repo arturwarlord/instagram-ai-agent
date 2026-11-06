@@ -268,5 +268,15 @@
     "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
     "gaze": "She briefly glances toward the camera with a relaxed, unposed expression.",
     "generated_at": "2026-11-05T21:19:43.640831+00:00"
+  },
+  {
+    "scene_id": "museum",
+    "scene": "a bright contemporary art museum",
+    "action": "standing in front of an artwork and looking at it naturally",
+    "outfit": "a casual dark jacket over a plain top, relaxed jeans and minimal silver jewelry",
+    "composition": "Use a casual candid composition with slightly imperfect framing, as if a friend took the photo spontaneously.",
+    "pose": "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
+    "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
+    "generated_at": "2026-11-06T20:41:44.948591+00:00"
   }
 ]
