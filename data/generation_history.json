@@ -278,5 +278,15 @@
     "pose": "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
     "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
     "generated_at": "2026-11-06T20:41:44.948591+00:00"
+  },
+  {
+    "scene_id": "hotel_lobby",
+    "scene": "a simple stylish hotel lobby",
+    "action": "sitting in an armchair and checking her phone",
+    "outfit": "a simple neutral cardigan, straight jeans and minimal silver jewelry",
+    "composition": "Place Alicia off-center in the left third of the frame, with the real location visible around her.",
+    "pose": "She is caught in a natural in-between moment, casually adjusting her sleeve or jacket.",
+    "gaze": "Her face is shown in a natural side or three-quarter view, not a straight-on portrait.",
+    "generated_at": "2026-11-07T19:14:54.470788+00:00"
   }
 ]
