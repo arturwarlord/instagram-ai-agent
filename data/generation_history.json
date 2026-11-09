@@ -288,5 +288,15 @@
     "pose": "She is caught in a natural in-between moment, casually adjusting her sleeve or jacket.",
     "gaze": "Her face is shown in a natural side or three-quarter view, not a straight-on portrait.",
     "generated_at": "2026-11-07T19:14:54.470788+00:00"
+  },
+  {
+    "scene_id": "street_bakery",
+    "scene": "a small neighborhood bakery",
+    "action": "standing outside with a paper bag of pastries",
+    "outfit": "a simple cream knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Use a wider environmental composition showing more of the street or interior, with Alicia not filling the whole frame.",
+    "pose": "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
+    "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
+    "generated_at": "2026-11-09T23:40:53.276683+00:00"
   }
 ]
