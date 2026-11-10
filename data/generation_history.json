@@ -298,5 +298,15 @@
     "pose": "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
     "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
     "generated_at": "2026-11-09T23:40:53.276683+00:00"
+  },
+  {
+    "scene_id": "riverside",
+    "scene": "a riverside promenade in a European city",
+    "action": "standing near the water with her hands in her sweater pockets",
+    "outfit": "a dark oversized knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Frame her from a little farther away, showing her natural posture and more of the surrounding environment.",
+    "pose": "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
+    "gaze": "She is looking off to the side, not directly into the lens.",
+    "generated_at": "2026-11-10T21:11:34.458380+00:00"
   }
 ]
