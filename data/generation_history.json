@@ -308,5 +308,15 @@
     "pose": "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
     "gaze": "She is looking off to the side, not directly into the lens.",
     "generated_at": "2026-11-10T21:11:34.458380+00:00"
+  },
+  {
+    "scene_id": "seaside",
+    "scene": "a quiet European seaside promenade",
+    "action": "walking near the water with her hair moving naturally in the breeze",
+    "outfit": "a casual dark jacket over a plain top, relaxed jeans and minimal silver jewelry",
+    "composition": "Photograph her from a slight side angle in a relaxed three-quarter view, not straight-on.",
+    "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
+    "gaze": "She is looking away from the camera toward something in the environment.",
+    "generated_at": "2026-11-12T21:42:44.439505+00:00"
   }
 ]
