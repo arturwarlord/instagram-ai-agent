@@ -348,5 +348,15 @@
     "pose": "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
     "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
     "generated_at": "2026-11-16T23:38:07.616004+00:00"
+  },
+  {
+    "scene_id": "metro",
+    "scene": "a clean modern metro platform",
+    "action": "waiting for a train while holding her phone",
+    "outfit": "a casual dark jacket over a plain top, relaxed jeans and minimal silver jewelry",
+    "composition": "Use a wider environmental composition showing more of the street or interior, with Alicia not filling the whole frame.",
+    "pose": "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
+    "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
+    "generated_at": "2026-11-17T22:45:58.285886+00:00"
   }
 ]
