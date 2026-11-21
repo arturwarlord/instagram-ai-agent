@@ -378,5 +378,15 @@
     "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
     "gaze": "She is looking away from the camera toward something in the environment.",
     "generated_at": "2026-11-20T22:06:32.194471+00:00"
+  },
+  {
+    "scene_id": "train_station",
+    "scene": "a modern European train station",
+    "action": "waiting near the platform with exactly one simple everyday shoulder bag, carried naturally at her side",
+    "outfit": "a dark oversized knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Use a casual candid composition with slightly imperfect framing, as if a friend took the photo spontaneously.",
+    "pose": "She is caught in a natural in-between moment, casually adjusting her sleeve or jacket.",
+    "gaze": "Her face is shown in a natural side or three-quarter view, not a straight-on portrait.",
+    "generated_at": "2026-11-21T20:46:08.762432+00:00"
   }
 ]
