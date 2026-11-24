@@ -398,5 +398,15 @@
     "pose": "When appropriate for the scene, she sits or stands at an angle rather than squarely facing the camera.",
     "gaze": "She briefly glances toward the camera with a relaxed, unposed expression.",
     "generated_at": "2026-11-22T20:55:18.146650+00:00"
+  },
+  {
+    "scene_id": "old_town",
+    "scene": "a charming old-town street in Europe",
+    "action": "walking past small shops and glancing to the side",
+    "outfit": "a simple neutral cardigan, straight jeans and minimal silver jewelry",
+    "composition": "Place Alicia off-center in the left third of the frame, with the real location visible around her.",
+    "pose": "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
+    "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
+    "generated_at": "2026-11-24T01:59:30.918868+00:00"
   }
 ]
