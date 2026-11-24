@@ -408,5 +408,15 @@
     "pose": "If the setting has a suitable wall, counter, or railing, she casually leans against it with relaxed shoulders.",
     "gaze": "Her gaze is slightly downward, as if noticing something nearby.",
     "generated_at": "2026-11-24T01:59:30.918868+00:00"
+  },
+  {
+    "scene_id": "bridge",
+    "scene": "a pedestrian bridge over a city river",
+    "action": "pausing for a moment and looking toward the city",
+    "outfit": "a simple cream knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Use a wider environmental composition showing more of the street or interior, with Alicia not filling the whole frame.",
+    "pose": "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
+    "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
+    "generated_at": "2026-11-24T23:44:47.192531+00:00"
   }
 ]
