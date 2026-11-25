@@ -418,5 +418,15 @@
     "pose": "Her body is turned slightly sideways, with her weight resting naturally on one leg.",
     "gaze": "She is focused on the activity she is doing rather than acknowledging the photographer.",
     "generated_at": "2026-11-24T23:44:47.192531+00:00"
+  },
+  {
+    "scene_id": "park_walk",
+    "scene": "a leafy European city park",
+    "action": "walking along a path while holding a takeaway drink",
+    "outfit": "a dark oversized knit sweater, straight jeans and minimal silver jewelry",
+    "composition": "Photograph her from a slight side angle in a relaxed three-quarter view, not straight-on.",
+    "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
+    "gaze": "She is looking off to the side, not directly into the lens.",
+    "generated_at": "2026-11-25T23:28:00.583232+00:00"
   }
 ]
