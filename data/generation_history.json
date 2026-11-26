@@ -428,5 +428,15 @@
     "pose": "She stands at a relaxed three-quarter angle, one shoulder slightly closer to the camera, without posing like a model.",
     "gaze": "She is looking off to the side, not directly into the lens.",
     "generated_at": "2026-11-25T23:28:00.583232+00:00"
+  },
+  {
+    "scene_id": "bookshop",
+    "scene": "a small independent bookshop",
+    "action": "browsing a shelf and holding an open book",
+    "outfit": "a casual dark jacket over a plain top, relaxed jeans and minimal silver jewelry",
+    "composition": "Use a casual candid composition with slightly imperfect framing, as if a friend took the photo spontaneously.",
+    "pose": "Her posture is relaxed and asymmetrical, with a slight shift of weight and hands resting naturally.",
+    "gaze": "She is looking away from the camera toward something in the environment.",
+    "generated_at": "2026-11-26T23:28:43.485290+00:00"
   }
 ]
